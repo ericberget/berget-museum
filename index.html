@@ -63,6 +63,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .t.txt { padding: 16px; display: grid; align-content: end; gap: 6px; }
 .t.txt .big { font-weight: 600; font-size: clamp(44px, 6vw, 84px); line-height: .85; letter-spacing: -.05em; color: var(--flare); }
 .t.txt b { font-weight: 500; font-size: clamp(16px, 1.6vw, 20px); line-height: 1.25; }
+.t.la canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.t.la .mono, .t.la b { position: relative; z-index: 1; text-shadow: 0 1px 8px #20272c, 0 0 2px #20272c; }
+.t.la .mono { color: var(--flare); }
 .t.dark { background: none; border: 1.5px dashed var(--rule); }
 .t.dark b { color: var(--muted); } .t.dark:hover { border-color: var(--gold); } .t.dark:hover b { color: var(--ink); }
 @media (max-width: 800px) { .wall { grid-template-columns: repeat(6, minmax(0, 1fr)); grid-auto-rows: 15vw; } .t, .t.w4, .t.w5 { grid-column: span 3; } .t.w6 { grid-column: span 6; } }
@@ -412,6 +415,20 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .src .go { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
 .leg .src { margin-top: 16px; padding: 10px 14px; }
 @media (max-width: 600px) { .src { grid-template-columns: minmax(0, 1fr); } }
+.ck { display: grid; }
+.ck-row { display: grid; grid-template-columns: 130px minmax(0, 1fr) minmax(0, 1.3fr) 130px; gap: 8px 24px; padding: 16px 0; border-top: 1px solid var(--rule); align-items: baseline; }
+.ck-row .where { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
+.ck-row .where a { color: var(--gold); text-decoration: none; } .ck-row .where a:hover { color: var(--flare); }
+.ck-row b { font-weight: 500; font-size: 17px; line-height: 1.3; }
+.ck-row p { color: var(--muted); font-size: 15px; }
+.ck-row .st { justify-self: end; font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border: 1px dashed var(--gold); border-radius: 3px; color: var(--gold); white-space: nowrap; }
+.ck-row .st.gs { border-color: var(--muted); color: var(--muted); }
+@media (max-width: 860px) { .ck-row { grid-template-columns: minmax(0, 1fr); } }
+.verify { margin-top: clamp(32px, 5vw, 56px); padding: clamp(18px, 3vw, 28px); border: 1.5px dashed var(--gold); border-radius: 10px; background: rgba(214,176,74,.05); }
+.verify h2 { font-family: "Newsreader", Georgia, serif; font-weight: 600; font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -.02em; line-height: 1.1; margin: 6px 0 12px; }
+.verify li { list-style: none; color: var(--muted); font-size: 15px; padding: 9px 0; border-top: 1px solid var(--rule); } .verify li:first-child { border-top: 0; }
+.verify li b { color: var(--ink); font-weight: 500; }
+.verify > p { color: var(--muted); font-size: 15px; margin-top: 12px; }
 .foot { border-top: 1px solid var(--rule); padding: 18px 0 60px; font-family: var(--mono); font-size: 12px; line-height: 1.8; color: var(--muted); }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } html { scroll-behavior: auto; } }
 </style>
@@ -666,7 +683,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   <p class="nm-p">The watercolour was given to G. Tandberg, who founded Hallingdal Museum in Nesbyen. It is still there.</p>
 
   <h2 class="nm-h">The family in this church</h2>
-  <p class="nm-p">Three family events are recorded in the Nes church book while the stave church stood: a wedding in 1788, a baptism in 1811 and Ole's birth entry in 1839. The other births in Nes in those years have no entry we have read yet. Baptisms here are likely, and they are marked that way.</p>
+  <p class="nm-p">Three family events are recorded in the Nes church book while the stave church stood: <b>a wedding in 1788</b>, <b>a baptism in 1811</b> and <b>Ole's birth entry in 1839</b>. The other births in Nes in those years have no entry we have read yet. Baptisms here are likely, and they are marked that way.</p>
   <div class="ch-bar" role="img" aria-label="A bar showing the life of the church from the 1200s to 1864. The family's records fall in the last 76 years."><i></i><b></b></div>
   <div class="ch-ends mono"><span>1200s</span><span>1864</span></div>
   <p class="mono ch-key">The church stood for about 590 years · <em>orange: 1788 to 1864, the family's records here</em> · <strong>white mark: Gude's painting</strong></p>
@@ -717,9 +734,22 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     <p class="nm-p"><b>We do not know where Ole and Birgit married.</b> Their first child was born in December 1865. If the wedding was before 1862, it was in the stave church.</p>
   </div>
 
+  <h2 class="nm-h">The new church, 1862</h2>
+  <p class="nm-p">The stave church was in such poor shape that it would have needed major repairs. The council decided to build a new church instead. The job went to <b>Georg Andreas Bull</b>, the same architect who had measured the old church in 1855. He was the brother of the violinist Ole Bull and had designed the East and West railway stations in Christiania (Oslo).</p>
+  <p class="nm-p">Work began in 1859. For a small, poor parish it was a huge effort. The church came out bigger than the one built in Hønefoss at about the same time, and people started calling it <b>Hallingdomen</b>, the Hallingdal cathedral. It is still the church in Nesbyen today.</p>
+  <figure class="nm-fig"><img src="img/nes-new-church.jpg" data-lb="The new Nes church soon after it was built, a coloured print reproduced in the Nes historielag booklet" alt="A hand-coloured print of a white wooden church with a pointed tower, standing in open fields with trees, below a long steep valley side."><figcaption class="mono">The new church soon after it was built · reproduced in the Nes historielag booklet</figcaption></figure>
+  <p class="nm-p"><span class="tag guess">Likely</span>Ole was 22 when it opened. He and Birgit would have known both buildings. Their four children were most likely baptised here, over the old soapstone font.</p>
+  <a class="src" href="https://neshistorielag.org/wp-content/uploads/2019/02/NES-HISTORIE-2.pdf" target="_blank" rel="noopener"><span class="mono">Local history</span><span><b>Nes historielag booklet: “Nes kirke”</b><small>On the new church, its architect and the name Hallingdomen</small></span><span class="go">Open ↗</span></a>
+
   <h2 class="nm-h">The other church</h2>
   <p class="nm-p">The family kept going to church after they crossed. This is the white frame church in North Dakota where Ron Berget went as a kid, photographed recently.</p>
   <figure class="nm-fig"><img src="img/nd-church.jpg" data-lb="The church in North Dakota where Ron Berget went as a kid, photographed recently" alt="A white wooden church with a shingled steeple and pointed arched windows, under a grey sky, with a man walking to the front door."><figcaption class="mono">North Dakota, recent photograph</figcaption></figure>
+
+  <div class="verify"><span class="mono" style="color:var(--gold)">For the family to check</span><h2>Not yet confirmed on this page</h2><ul>
+    <li><b>The 1788 and 1811 church book entries.</b> The wedding and baptism details come from transcriptions in the family database. They have not been checked against scans of the pages.</li>
+    <li><b>Baptisms in the stave church.</b> Births with no entry read yet are marked Likely, not recorded.</li>
+    <li><b>The church in North Dakota.</b> Its name and town are not given yet, or whether Ronald and Christ went there too.</li>
+  </ul><p>Corrections can go straight to Eric.</p></div>
 
   <p class="ch-src">Sources: Hallingdal Museum, through Google Arts &amp; Culture, for the painting, its date, size and history. The Norwegian Wikipedia article <a href="https://no.wikipedia.org/wiki/Nes_stavkirke_(Hallingdal)">Nes stavkirke (Hallingdal)</a> for the building, the measurements, the 1965 excavation and what survives. <a href="https://lokalhistoriewiki.no/wiki/Stavkirker_i_Buskerud">Lokalhistoriewiki</a> for the date of about 1275 and for Flå. Hallingdal Reiseliv, through Visit Norway, for Ove Gude's years in Nes and the 1862 church. Family dates are from the family database.</p>
 </div></section>
@@ -756,11 +786,19 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   </div>
 
   <h2 class="nm-h">Crossing the river</h2>
-  <p class="nm-p">The farm and the church are on opposite sides of the valley. We have not yet worked out whether the way to church crossed the Hallingdal river, or only the smaller Rukkedøla that joins it at Nesbyen.</p>
-  <p class="nm-p">The steel bridge at Nesbyen was not built until <b>1909</b>, 29 years after Ole left. Before it, there was an older <b>wooden bridge with one pier in the middle of the river</b>, still standing in a photograph of Nesbyen from about 1890. The local history society does not say which river it crossed.</p>
+  <p class="nm-p">The farm and the church are on opposite sides of the valley. Nesbyen sits on the point where the Rukkedøla joins the Hallingdal river, and Berget is across the main river from it. So the way to church very likely crossed the Hallingdal river. <span class="tag guess">Likely</span></p>
+  <figure class="nm-fig"><img src="img/nesbyen-1890.jpg" data-lb="Nesbyen about 1890, from the slope across the river. The wooden bridge crosses the river left of centre, and the road runs from it up through the village. The white cross-shaped church is the new Nes church of 1862. Hallingdal Museum photo archive, via Nes historielag" alt="An old photograph looking down on a river, a wooden bridge, a village of log buildings and a white cross-shaped church among walled fields, with hills beyond."><figcaption class="mono">Nesbyen about 1890. The pale strip left of centre is probably the wooden bridge, and the new church is in the middle distance. Berget is probably behind the camera. Hallingdal Museum photo archive</figcaption></figure>
+  <p class="nm-p">The steel bridge at Nesbyen was not built until <b>1909</b>, 29 years after Ole left. Before it, there was an older <b>wooden bridge with one pier in the middle of the river</b>, still standing in the photograph above, taken about ten years after Ole left.</p>
   <p class="nm-p">Two more details from the same booklet. The great flood of 1860 took every wooden bridge in Buskerud, so for a time there may have been no bridge at all. And in winter the frozen river was used as a road.</p>
   <a class="src" href="https://neshistorielag.org/wp-content/uploads/2019/02/NES-HISTORIE-2.pdf" target="_blank" rel="noopener"><span class="mono">Source</span><span><b>Glimt fra Nes historie (Glimpses of Nes history)</b><small>Nes historielag, the local history society. See "Nesbyen, tre fotografier" and the 1860 flood</small></span><span class="go">Open ↗</span></a>
   <a class="src" href="https://digitaltmuseum.no/021018385462/nes-bru-i-hallingdal-oppfort-1909" target="_blank" rel="noopener"><span class="mono">Museum record</span><span><b>Nes bru i Hallingdal, oppført 1909 (Nes bridge, built 1909)</b><small>Norsk vegmuseum, the Norwegian Road Museum</small></span><span class="go">Open ↗</span></a>
+
+  <div class="verify"><span class="mono" style="color:var(--gold)">For the family to check</span><h2>Not yet confirmed on this page</h2><ul>
+    <li><b>Which of the two Berget plots was theirs.</b> The neighbourhood is very likely right: the 1865 census puts the family's Berget among the Lie farms, and today's Berget sits beside the Storeli farms in Liagardane. But that census lists two neighbouring holdings both called Berget, and no record yet says which one, holding 130c, was theirs.</li>
+    <li><b>The way to church.</b> That the route crossed the Hallingdal river, and that the 1890 photo shows the bridge and was taken from the Berget side, are our reading of the map and the photo.</li>
+    <li><b>Walking and riding times.</b> Worked out from the terrain survey with a standard hiking rule. The real paths would have been longer.</li>
+    <li><b>The four suspects.</b> The rock behind the name is a mystery. None of the four is confirmed.</li>
+  </ul><p>Corrections can go straight to Eric.</p></div>
 
   <h2 class="nm-h">What would solve it</h2>
   <p class="nm-p"><b>The farm history.</b> Terje Østro's Gards- og Slektshistorie for Nes i Hallingdal has a volume for the Berg and Lie quarter. Its list of farms includes Berget. It should say who lived there and what the name refers to.</p>
@@ -778,7 +816,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
 <aside class="pc" id="pc" aria-label="Person" hidden></aside>
 <div class="lb" id="lb" hidden><figure><span class="lbw"><img id="lbimg" alt=""><img id="lbrest" alt=""></span><div class="lbs" id="lbs" hidden><span data-v="0">Original</span><input type="range" min="0" max="100" value="0" id="lbrange" aria-label="Fade from the original to the restored picture"><span data-v="100">Restored</span></div><figcaption><span id="lbcap"></span><small id="lbnote"></small></figcaption></figure></div>
-<div class="gut"><footer class="foot">Photographs and family facts: the Berget family tree database, seeded from Ron Berget's Ancestry tree, his emails and his document “The Berget Family Tree.” Records: Digitalarkivet, the National Archives of Norway. Ship details: Norway Heritage. Watercolour of Nes church by Hans Gude, 1845: Hallingdal Museum. Anything marked Guess is an inference and may be wrong.</footer></div>
+<div class="gut"><footer class="foot">Photographs and family facts: the Berget family tree database, seeded from Ron Berget's Ancestry tree, his emails and his document “The Berget Family Tree.” Records: Digitalarkivet, the National Archives of Norway. Ship details: Norway Heritage. Watercolour of Nes church by Hans Gude, 1845: Hallingdal Museum. Anything marked Guess or Likely is an inference and may be wrong. This is a draft that the family is still checking.</footer></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="data/terrain.js"></script>
@@ -811,7 +849,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   var WALL = [
     { c: 'w4 h5', img: 'portrait', to: 'faces', k: 'About 1890', b: 'Ole and Birgit, ten years after they left', pos: '50% 30%' },
     { c: 'w5', img: 'ledger-1880-entry', to: 'ledger', k: '26 August 1880', b: 'Three names in a police ledger' },
-    { c: 'txt', to: 'line', big: '13', b: 'fathers and sons, back to 1590' },
+    { c: 'txt la', to: 'line', k: 'The line', b: '', anim: 1 },
     { c: 'w5 h4', img: 'threshing', to: 'farm', k: 'North Dakota', b: 'Ronald, threshing' },
     { c: 'h4', img: 'christ', to: 'faces', k: 'About 1900', b: 'Christ, who left at eight', pos: '50% 25%' },
     { c: 'w4 h2', img: 'portrait', to: 'unsolved', k: 'Unsolved', b: 'Was Birgit on the boat?', pos: '62% 47%', zoom: 2.6 },
@@ -831,7 +869,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   $('#wall').innerHTML = WALL.map(function (t) {
     var inner = t.img
       ? '<img src="img/' + t.img + '.jpg" alt="" loading="lazy"' + (t.pos || t.zoom ? ' style="' + (t.pos ? 'object-position:' + t.pos + ';' : '') + (t.zoom ? 'transform-origin:' + t.pos + ';scale:' + t.zoom + ';' : '') + '"' : '') + '><div class="cap"><span class="mono">' + esc(t.k) + '</span><b>' + esc(t.b) + '</b></div>'
-      : (t.big ? '<span class="big">' + t.big + '</span>' : '<span class="mono">' + esc(t.k) + '</span>') + '<b>' + esc(t.b) + '</b>';
+      : (t.anim ? '<canvas aria-hidden="true"></canvas>' : '') + (t.big ? '<span class="big">' + t.big + '</span>' : '<span class="mono">' + esc(t.k) + '</span>') + (t.b ? '<b>' + esc(t.b) + '</b>' : '');
     return '<a class="t ' + t.c + '" href="#' + t.to + '">' + inner + '</a>';
   }).join('');
 
@@ -996,11 +1034,63 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   ];
   $('#prints').innerHTML = PRINTS.map(function (p, i) { return '<button type="button" class="print' + (p.wide ? ' wide' : '') + '" style="--a:' + p.a + 'deg" data-i="' + i + '"><img src="img/' + p.img + '.jpg" alt="' + esc(p.c) + '" loading="lazy"' + (p.pos ? ' style="object-position:' + p.pos + '"' : '') + '><span>' + esc(p.c) + '</span></button>'; }).join('');
   /* pictures that also have a restored copy: original file name -> restored file name */
-  var RESTORED = { 'christ': 'christ-restored', 'threshing': 'threshing-restored', 'ronald': 'ronald-restored', 'ronald-confirmation': 'ronald-confirmation-restored', 'portrait': 'portrait-restored', 'ole': 'ole-restored', 'birgit': 'birgit-restored', 'schoolhouse': 'schoolhouse-reimagined', 'farm10': 'farm10-reimagined', 'farm08': 'farm08-reimagined' };
+  var RESTORED = { 'christ': 'christ-restored', 'threshing': 'threshing-restored', 'ronald': 'ronald-restored', 'ronald-confirmation': 'ronald-confirmation-restored', 'portrait': 'portrait-restored', 'ole': 'ole-restored', 'birgit': 'birgit-restored', 'schoolhouse': 'schoolhouse-reimagined', 'farm10': 'farm10-reimagined', 'farm08': 'farm08-reimagined', 'farm-ronald-step': 'farm-ronald-step-reimagined' };
   /* pictures whose second version is a painted reimagining rather than a restoration */
-  var REIMAGINED = { 'schoolhouse': 1, 'farm10': 1, 'farm08': 1 };
+  var REIMAGINED = { 'schoolhouse': 1, 'farm10': 1, 'farm08': 1, 'farm-ronald-step': 1 };
   function zm() { document.querySelectorAll('img[data-lb]').forEach(function (im) { if (im.parentNode.classList.contains('zm')) return; var w = document.createElement('span'); w.className = 'zm'; im.parentNode.insertBefore(w, im); w.appendChild(im); var b = document.createElement('button'); b.type = 'button'; b.className = 'zb'; b.setAttribute('aria-label', 'Enlarge this picture'); b.textContent = '+'; w.appendChild(b);
     var m = /img\/([^\/.]+)\.jpg$/.exec(im.getAttribute('src')); if (m && RESTORED[m[1]]) { im.dataset.rest = RESTORED[m[1]]; if (REIMAGINED[m[1]]) im.dataset.kind = 're'; } }); }
+
+  /* the line: a low camera gliding back through the generations */
+  (function () {
+    var cv = document.querySelector('.t.la canvas'); if (!cv) return;
+    var ctx = cv.getContext('2d'), still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var YRS = [1908, 1872, 1839, 1811, 1788, 1751, 1726, 1696, 1665, 1625, 1590], N = YRS.length, GAP = 6, CAMH = 1, SPEED = 1.1;
+    var w = 0, h = 0, dpr = 1, t0 = performance.now(), raf = 0, hovering = false, phase = 0, last = t0;
+    var PICS = [['ole', .5, .3], ['christ', .5, .25], ['ronald', .5, .22]].map(function (p) { var im = new Image(); im.src = 'img/' + p[0] + '.jpg'; return { im: im, x: p[1], y: p[2] }; });
+    var HOLD = 7, FADE = 4, PEAK = .15;
+    function pic(im, a, fx, fy) { if (!im.complete || !im.naturalWidth || a <= 0) return; var s = Math.max(w / im.naturalWidth, h / im.naturalHeight), dw = im.naturalWidth * s, dh = im.naturalHeight * s;
+      ctx.save(); ctx.globalAlpha = a; ctx.filter = 'grayscale(1) contrast(1.05)'; ctx.drawImage(im, (w - dw) * fx, (h - dh) * fy, dw, dh); ctx.restore(); }
+    function size() { var r = cv.getBoundingClientRect(); dpr = Math.min(2, window.devicePixelRatio || 1); w = r.width; h = r.height; cv.width = w * dpr; cv.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+    function draw(now) {
+      var dt = Math.min(100, now - last); last = now; phase += dt / 1000 * SPEED * (hovering ? 2.2 : 1);
+      ctx.clearRect(0, 0, w, h);
+      var cyc = HOLD + FADE, tt = (now - t0) / 1000, k = Math.floor(tt / cyc) % PICS.length, u = tt % cyc;
+      var cur = PICS[k], nxt = PICS[(k + 1) % PICS.length], mix = u < HOLD ? 0 : (u - HOLD) / FADE, e = mix * mix * (3 - 2 * mix);
+      pic(cur.im, PEAK * (1 - e), cur.x, cur.y); pic(nxt.im, PEAK * e, nxt.x, nxt.y);
+      var vg = ctx.createLinearGradient(0, 0, 0, h); vg.addColorStop(0, 'rgba(32,39,44,.55)'); vg.addColorStop(.45, 'rgba(32,39,44,0)'); vg.addColorStop(1, 'rgba(32,39,44,.7)'); ctx.fillStyle = vg; ctx.fillRect(0, 0, w, h);
+      var hz = h * .36, cx = w * .62, f = h * .5, LX = -1.1, loop = N * GAP, cam = phase % loop;
+      var P = function (x, z) { return [cx + x * f / z, hz + CAMH * f / z]; };
+      // ground furrows running to the horizon
+      ctx.lineWidth = 1;
+      for (var k = -6; k <= 4; k++) { if (k === -1) continue; var a = P(k * .9 + LX + .9, .6), b = P(k * .9 + LX + .9, 80); var g = ctx.createLinearGradient(0, a[1], 0, b[1]); g.addColorStop(0, 'rgba(157,178,189,.16)'); g.addColorStop(1, 'rgba(157,178,189,0)'); ctx.strokeStyle = g; ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke(); }
+      // horizon glow
+      var hg = ctx.createLinearGradient(0, hz - 30, 0, hz + 30); hg.addColorStop(0, 'rgba(255,122,79,0)'); hg.addColorStop(.5, 'rgba(255,122,79,.08)'); hg.addColorStop(1, 'rgba(255,122,79,0)'); ctx.fillStyle = hg; ctx.fillRect(0, hz - 30, w, 60);
+      // the line
+      var n0 = P(LX, .5), n1 = P(LX, 90), lg = ctx.createLinearGradient(0, n0[1], 0, n1[1]); lg.addColorStop(0, 'rgba(237,243,245,.9)'); lg.addColorStop(1, 'rgba(237,243,245,0)');
+      ctx.strokeStyle = lg; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(n0[0], n0[1]); ctx.lineTo(n1[0], n1[1]); ctx.stroke();
+      // generations, far ones first
+      var marks = [];
+      for (var i = 0; i < N * 2; i++) { var z = i * GAP - cam + 2.5; if (z > .55 && z < 34) marks.push([z, YRS[i % N]]); }
+      marks.sort(function (a, b) { return b[0] - a[0]; });
+      marks.forEach(function (m) {
+        var p = P(LX, m[0]), s = f / m[0], al = Math.max(0, Math.min(1, (34 - m[0]) / 18)) * Math.min(1, (m[0] - .9) / 1.6);
+        var r = Math.max(1.2, s * .09);
+        ctx.globalAlpha = al; ctx.fillStyle = '#20272c'; ctx.strokeStyle = '#ff7a4f'; ctx.lineWidth = Math.max(1, r * .35);
+        ctx.beginPath(); ctx.arc(p[0], p[1], r, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        var fs = Math.max(7, Math.min(30, s * .22));
+        ctx.font = '500 ' + fs + 'px "IBM Plex Mono", ui-monospace, monospace'; ctx.fillStyle = 'rgba(237,243,245,.85)'; ctx.textBaseline = 'middle';
+        if (m[0] < 20) { ctx.globalAlpha = al * Math.min(1, (20 - m[0]) / 8); ctx.fillText(String(m[1]), p[0] + r + fs * .5, p[1]); }
+        ctx.globalAlpha = 1;
+      });
+      if (!still && !$('#v-home').hidden) raf = requestAnimationFrame(draw); else raf = 0;
+    }
+    function go() { if (!raf) { last = performance.now(); raf = requestAnimationFrame(draw); } }
+    size(); window.addEventListener('resize', function () { size(); if (still) draw(performance.now()); });
+    var tile = cv.parentNode; tile.addEventListener('mouseenter', function () { hovering = true; }); tile.addEventListener('mouseleave', function () { hovering = false; });
+    window.addEventListener('hashchange', function () { if (!$('#v-home').hidden) { size(); go(); } });
+    if (still) { phase = 9; draw(performance.now()); } else go();
+  })();
+
   zm(); new MutationObserver(zm).observe($('#leg'), { childList: true, subtree: true });
   var lbKind = '';
   function lbOpen(src, alt, cap, rest, kind) { lbKind = kind || ''; $('#lbs span[data-v="100"]').textContent = lbKind === 're' ? 'Reimagined' : 'Restored'; $('#lbimg').src = src; $('#lbimg').alt = alt; $('#lbcap').textContent = cap; $('#lbrange').value = 0; $('#lbrest').style.opacity = 0; $('#lbnote').textContent = ''; if (rest) { $('#lbrest').src = 'img/' + rest + '.jpg'; $('#lbs').hidden = false; } else { $('#lbrest').removeAttribute('src'); $('#lbs').hidden = true; } $('#lb').hidden = false; }
