@@ -190,6 +190,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .atlas { margin-top: 10px; border-radius: 10px; overflow: hidden; background: #31454c; }
 .atlas svg { display: block; width: 100%; height: auto; }
 .atlas .land { fill: #d3c39b; stroke: #8f8262; stroke-width: .6; vector-effect: non-scaling-stroke; }
+.atlas .state { fill: none; stroke: #8f8262; stroke-width: .8; stroke-dasharray: 3 3; vector-effect: non-scaling-stroke; opacity: .6; }
+.atlas .lab.st { fill: rgba(19,34,45,.32); }
 .atlas .grat { fill: none; stroke: rgba(237,243,245,.13); stroke-width: 1; vector-effect: non-scaling-stroke; }
 .atlas .seg { fill: none; stroke: #b23a1c; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; opacity: .22; transition: opacity .8s; }
 .atlas .seg.done { opacity: 1; } .atlas .seg.guess { stroke-dasharray: 2 7; }
@@ -304,11 +306,16 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .st-tile h3 { font-family: "Newsreader", Georgia, serif; font-weight: 600; font-size: clamp(20px, 1.9vw, 25px); line-height: 1.12; letter-spacing: -.02em; margin-top: 4px; }
 .st-tile:hover h3 { color: var(--flare); }
 .st-tile p { color: var(--muted); font-size: 14.5px; line-height: 1.45; }
+.st-bg { position: absolute; left: 0; right: 0; top: 0; height: min(820px, 100vh); z-index: -1; background-size: cover; background-repeat: no-repeat; opacity: .2; filter: grayscale(1) contrast(1.1); pointer-events: none; -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent 100%); mask-image: linear-gradient(to bottom, #000 35%, transparent 100%); }
+#v-stories { position: relative; isolation: isolate; }
+.st-credit { margin-top: 36px; }
 .st-art { max-width: 760px; padding-top: clamp(20px, 3vw, 36px); }
 .st-back { display: inline-block; margin-bottom: 26px; text-decoration: none; } .st-back:hover { color: var(--flare); }
 .st-art h1 { font-family: "Newsreader", Georgia, serif; font-weight: 600; font-size: clamp(36px, 5.4vw, 64px); line-height: 1.02; letter-spacing: -.03em; margin: 8px 0 18px; }
 .st-art .lead { font-size: clamp(18px, 1.8vw, 22px); line-height: 1.45; }
-.st-art figure { margin: 30px 0; } .st-art figure img { width: 100%; max-height: 560px; object-fit: contain; background: #0f1214; border-radius: var(--r); }
+.st-art figure { margin: 30px 0; }
+.st-art figure .zm { display: inline-block; max-width: 100%; padding: 10px; background: #f3efe6; border-radius: 3px; }
+.st-art figure img { display: block; width: auto; max-width: 100%; max-height: 560px; border-radius: 1px; }
 .st-art figcaption { margin-top: 8px; }
 .st-art .body p { color: var(--muted); font-size: 17px; line-height: 1.65; margin-top: 16px; } .st-art .body p b { color: var(--ink); font-weight: 500; }
 .st-art .body h2 { font-family: "Newsreader", Georgia, serif; font-weight: 600; font-size: clamp(24px, 2.6vw, 32px); letter-spacing: -.02em; line-height: 1.1; margin-top: 40px; }
@@ -419,12 +426,12 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 </section>
 
 <section class="view" id="v-line" hidden><div class="gut">
-  <div class="head"><span class="mono">View 2 · scroll down through time</span><h1>The line</h1><p>Thirteen fathers and sons. A solid line means a record backs that generation. A dashed line means it rests only on Ron Berget's Ancestry tree.</p></div>
+  <div class="head"><span class="mono">View 5 · scroll down through time</span><h1>The line</h1><p>Thirteen fathers and sons. A solid line means a record backs that generation. A dashed line means it rests only on Ron Berget's Ancestry tree.</p></div>
   <div class="line" id="line"></div>
 </div></section>
 
 <section class="view" id="v-crossing" hidden><div class="gut">
-  <div class="head"><span class="mono">View 3 · step through the journey</span><h1>The crossing</h1><p>Nes to North Dakota, one stop at a time. Ole, Gunhild and Christ took fifteen days from Christiania to Quebec in 1880. Use the buttons or the arrow keys.</p></div>
+  <div class="head"><span class="mono">View 6 · step through the journey</span><h1>The crossing</h1><p>Nes to North Dakota, one stop at a time. Ole, Gunhild and Christ took fifteen days from Christiania to Quebec in 1880. Use the buttons or the arrow keys.</p></div>
   <div class="strip" id="strip" role="tablist" aria-label="Stops"></div>
   <div class="atlas"><svg id="map" role="img" aria-label="A map of the North Atlantic. The route runs from Nes in Norway by sea to Hull, across England, across the Atlantic to Quebec and on to Wisconsin and North Dakota."></svg></div>
   <div class="leg" id="leg" aria-live="polite"></div>
@@ -433,7 +440,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 </div></section>
 
 <section class="view" id="v-ship" hidden><div class="gut">
-  <div class="head"><span class="mono">View 4 · one ship</span><h1>The ship</h1><p>The Kristiania police ledger names one ship: the Angelo. Ole, Gunhild and Christ boarded her on 27 August 1880, and she took them across the North Sea to Hull.</p></div>
+  <div class="head"><span class="mono">View 7 · one ship</span><h1>The ship</h1><p>The Kristiania police ledger names one ship: the Angelo. Ole, Gunhild and Christ boarded her on 27 August 1880, and she took them across the North Sea to Hull.</p></div>
 
   <div class="sh-top">
     <figure><img src="img/angelo.jpg" data-lb="The S/S Angelo, from The Illustrated London News, 1874" alt="An engraving of a steamship with a single funnel and three masts under sail, in a rough sea."><figcaption class="mono">The Illustrated London News, 1874</figcaption></figure>
@@ -493,7 +500,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 </div></section>
 
 <section class="view" id="v-ledger" hidden><div class="gut">
-  <div class="head"><span class="mono">View 5 · look closely at one document</span><h1>The ledger</h1><p>The Kristiania police register for August 1880. Choose what to look at and the page moves to it.</p></div>
+  <div class="head"><span class="mono">View 8 · look closely at one document</span><h1>The ledger</h1><p>The Kristiania police register for August 1880. Choose what to look at and the page moves to it.</p></div>
   <div class="two">
     <div><div class="doc"><img id="docimg" src="img/ledger-1880.jpg" alt="A two-page spread of a handwritten police register from August 1880, ruled into columns."></div>
       <div class="chips" id="chips"></div></div>
@@ -502,7 +509,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 </div></section>
 
 <section class="view" id="v-faces" hidden><div class="gut">
-  <div class="head"><span class="mono">View 6 · meet them</span><h1>Faces</h1><p>The only photograph of anyone born in Nes. Move over a face to see who it is. Select one to open that person.</p></div>
+  <div class="head"><span class="mono">View 1 · meet them</span><h1>Faces</h1><p>The only photograph of anyone born in Nes. Move over a face to see who it is. Select one to open that person.</p></div>
   <div class="two" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr)">
     <div class="who"><img src="img/portrait.jpg" data-lb="Ole and Birgit with three of their children, about 1890" alt="A studio portrait from about 1890: a bearded man and a woman seated, with a young man and two young women standing behind them.">
       <button type="button" data-p="ole-amundsen-berget-1839" style="left:17%;top:30%;width:21%;height:17%"><span>Ole Amundsen Berget<small>1839 to 1916 · the emigrant</small></span></button>
@@ -569,18 +576,19 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 </div></section>
 
 <section class="view" id="v-farm" hidden><div class="gut">
-  <div class="head"><span class="mono">View 7 · a box of prints</span><h1>The farm</h1><p>North of Turtle Lake, North Dakota. Christ and Margith were there by 1910, and Ronald farmed it until 1971. Pick up a print to see it larger.</p></div>
+  <div class="head"><span class="mono">View 3 · a box of prints</span><h1>The farm</h1><p>North of Turtle Lake, North Dakota. Christ and Margith were there by 1910, and Ronald farmed it until 1971. Pick up a print to see it larger.</p></div>
   <div class="table" id="prints"></div>
 </div></section>
 
 <section class="view" id="v-stories" hidden><div class="gut">
-  <div id="st-list"><div class="head"><span class="mono">View 8 · read one</span><h1>Short stories</h1><p>Tiny tales from the tree.</p></div>
+  <div id="st-list"><div class="head"><span class="mono">View 4 · read one</span><h1>Short stories</h1><p>Tiny tales from the tree.</p></div>
   <div class="st-grid" id="cards"></div></div>
+  <div class="st-bg" id="st-bg" hidden></div>
   <article class="st-art" id="st-art" hidden></article>
 </div></section>
 
 <section class="view" id="v-name" hidden><div class="gut">
-  <div class="head"><span class="mono">View 9 · one word</span><h1>The name</h1></div>
+  <div class="head"><span class="mono">View 2 · one word</span><h1>The name</h1></div>
   <div class="nm-word">
     <div class="w">Berg<em>et</em></div>
     <dl><dt>berg</dt><dd>rock, hill or mountain. One of the most common farm names in Norway.</dd><dt class="et">-et</dt><dd>“the”. Norwegian puts it on the end of the word.</dd><dt>Berget</dt><dd>“the rock” or “the hill”. In Norwegian the final t is silent, so it sounds roughly like BAIR-geh.</dd></dl>
@@ -641,7 +649,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 </div></section>
 
 <section class="view" id="v-church" hidden><div class="gut">
-  <div class="head"><span class="mono">View 10 · one building</span><h1>The church</h1><p>The old stave church at Nes in Hallingdal. The family's oldest records from Nes were written for events inside it. It was pulled down in 1864.</p></div>
+  <div class="head"><span class="mono">View 9 · one building</span><h1>The church</h1><p>The old stave church at Nes in Hallingdal. The family's oldest records from Nes were written for events inside it. It was pulled down in 1864.</p></div>
 
   <div class="ch-top">
     <div><div class="doc"><img id="chimg" src="img/gude-nes-church.jpg" alt="A watercolour of a brown timber church with a shingled roof and a tall thin spire, behind a dry stone wall, with a steep valley side rising behind it."></div>
@@ -717,7 +725,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 </div></section>
 
 <section class="view" id="v-rock" hidden><div class="gut">
-  <div class="head"><span class="mono">View 11 · a mystery</span><h1>The rock</h1><p>Berget means the rock. This is the real ground around the farm, built from Norway's terrain survey. Somewhere in it is the rock the family is named for.</p></div>
+  <div class="head"><span class="mono">View 10 · a mystery</span><h1>The rock</h1><p>Berget means the rock. This is the real ground around the farm, built from Norway's terrain survey. Somewhere in it is the rock the family is named for.</p></div>
   <div class="rk-stage" id="rk">
     <canvas aria-label="A 3D model of the valley at Nes and the hillside around the Berget farm."></canvas>
     <div class="rk-labels" aria-hidden="true"></div>
@@ -738,6 +746,22 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     <article class="room"><span class="num">4</span><h3>The yard itself</h3><p>The name may describe the farm's own ground: a house built on bare rock. The slope near the farm point is as steep as 30°.</p><p><b>For:</b> it is the simplest reading of the name.</p><p><b>Against:</b> the model cannot show bare rock. Someone has to stand there.</p><p class="ctl"><button type="button" data-rk="s4">Show me</button></p></article>
   </div>
 
+  <h2 class="nm-h">Getting to church</h2>
+  <p class="nm-p">The farm sits about 1,130 feet above the old church site, 3.8 miles away as the crow flies. These times are worked out from the terrain survey, using a standard hiking-speed rule along the easiest slopes. The old paths would have wound more, so read them as the shortest likely.</p>
+  <div class="nm-rows sh-num">
+    <div class="nm-row"><span class="yr">1½ hrs</span><div class="wr">On foot, down to church<small>about 4.3 miles by the easiest slopes</small></div><p>Downhill most of the way. With small children, or carrying a baby to be baptised, closer to two hours.</p></div>
+    <div class="nm-row"><span class="yr">2 hrs</span><div class="wr">On foot, back home<small>1,130 feet of climbing</small></div><p>The way home was the hard part, uphill the whole time.</p></div>
+    <div class="nm-row"><span class="yr">1 hr</span><div class="wr">By horse<small>at a walk, our estimate</small></div><p><span class="tag guess">Guess</span>A horse at a walk covers about 4 miles an hour on easy ground, slower on steep slopes. A cart or a winter sleigh would be about the same, where the track allowed one.</p></div>
+    <div class="nm-row"><span class="yr">45 min</span><div class="wr">On foot, down to the river<small>about 1.8 miles, to the valley floor</small></div><p>The nearest stretch of the Hallingdal river, south-west of the farm. About an hour back up.</p></div>
+  </div>
+
+  <h2 class="nm-h">Crossing the river</h2>
+  <p class="nm-p">The farm and the church are on opposite sides of the valley. We have not yet worked out whether the way to church crossed the Hallingdal river, or only the smaller Rukkedøla that joins it at Nesbyen.</p>
+  <p class="nm-p">The steel bridge at Nesbyen was not built until <b>1909</b>, 29 years after Ole left. Before it, there was an older <b>wooden bridge with one pier in the middle of the river</b>, still standing in a photograph of Nesbyen from about 1890. The local history society does not say which river it crossed.</p>
+  <p class="nm-p">Two more details from the same booklet. The great flood of 1860 took every wooden bridge in Buskerud, so for a time there may have been no bridge at all. And in winter the frozen river was used as a road.</p>
+  <a class="src" href="https://neshistorielag.org/wp-content/uploads/2019/02/NES-HISTORIE-2.pdf" target="_blank" rel="noopener"><span class="mono">Source</span><span><b>Glimt fra Nes historie (Glimpses of Nes history)</b><small>Nes historielag, the local history society. See "Nesbyen, tre fotografier" and the 1860 flood</small></span><span class="go">Open ↗</span></a>
+  <a class="src" href="https://digitaltmuseum.no/021018385462/nes-bru-i-hallingdal-oppfort-1909" target="_blank" rel="noopener"><span class="mono">Museum record</span><span><b>Nes bru i Hallingdal, oppført 1909 (Nes bridge, built 1909)</b><small>Norsk vegmuseum, the Norwegian Road Museum</small></span><span class="go">Open ↗</span></a>
+
   <h2 class="nm-h">What would solve it</h2>
   <p class="nm-p"><b>The farm history.</b> Terje Østro's Gards- og Slektshistorie for Nes i Hallingdal has a volume for the Berg and Lie quarter. Its list of farms includes Berget. It should say who lived there and what the name refers to.</p>
   <p class="nm-p"><b>The land register.</b> The 1865 census calls the family's farm holding 130c. No record yet ties that number to the Berget on today's map. The witnesses' names are the only link so far.</p>
@@ -747,7 +771,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 </div></section>
 
 <section class="view" id="v-unsolved" hidden><div class="gut">
-  <div class="head"><span class="mono">View 12 · help solve one</span><h1>Unsolved</h1><p>Rooms with the lights off. Each is a question someone in the family could close.</p></div>
+  <div class="head"><span class="mono">View 11 · help solve one</span><h1>Unsolved</h1><p>Rooms with the lights off. Each is a question someone in the family could close.</p></div>
   <div class="rooms" id="rooms"></div>
 </div></section>
 </main>
@@ -769,7 +793,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   var TAG = { record: '<span class="tag record">Record</span>', family: '<span class="tag">Family</span>', guess: '<span class="tag guess">Guess</span>' };
 
   var PPL = window.PEOPLE || {}, A = window.ATLAS;
-  var VIEWS = [['home', 'Wall'], ['line', 'The line'], ['crossing', 'The crossing'], ['ship', 'The ship'], ['ledger', 'The ledger'], ['faces', 'Faces'], ['farm', 'The farm'], ['stories', 'Short stories'], ['name', 'The name'], ['church', 'The church'], ['rock', 'The rock'], ['unsolved', 'Unsolved']];
+  var VIEWS = [['faces', 'Faces'], ['name', 'The name'], ['farm', 'The farm'], ['stories', 'Short stories'], ['line', 'The line'], ['crossing', 'The crossing'], ['ship', 'The ship'], ['ledger', 'The ledger'], ['church', 'The church'], ['rock', 'The rock'], ['unsolved', 'Unsolved'], ['home', 'Wall']];
   $('#nav').innerHTML = VIEWS.map(function (v) { return '<a href="#' + v[0] + '">' + v[1] + '</a>'; }).join('');
   function show() {
     var name = location.hash.replace('#', ''), sid = '';
@@ -863,7 +887,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   var map = $('#map'), vb = null, raf = 0, AR = 2000 / 780;
   if (A) {
     var seaLab = { 'ATLANTIC OCEAN': 1, 'NORTH SEA': 1 };
-    map.innerHTML = '<path class="grat" d="' + A.grat + '"/><path class="land" d="' + A.land + '"/>' +
+    map.innerHTML = '<path class="grat" d="' + A.grat + '"/><path class="land" d="' + A.land + '"/>' + (A.states ? '<path class="state" d="' + A.states + '"/>' : '') + (A.usBorder ? '<path class="state" d="' + A.usBorder + '"/>' : '') +
+      (A.stateLabels || []).filter(function (l) { return l[0] !== 'MICHIGAN'; }).map(function (l) { return '<text class="lab st" x="' + l[1] + '" y="' + l[2] + '">' + l[0] + '</text>'; }).join('') +
       A.labels.map(function (l) { return '<text class="lab' + (seaLab[l[0]] ? ' sea' : '') + '" x="' + l[1] + '" y="' + l[2] + '">' + l[0] + '</text>'; }).join('') +
       A.segs.map(function (d, i) { return '<path class="seg' + (i === 0 || STOPS[i + 1].b === 'guess' ? ' guess' : '') + '" d="' + d + '"/>'; }).join('') +
       A.pts.map(function (p, i) { return '<circle class="dot" cx="' + p[0] + '" cy="' + p[1] + '"/><text class="name" y="' + p[1] + '">' + esc(STOPS[i].p) + '</text>'; }).join('');
@@ -1011,7 +1036,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
              ['https://en.wikipedia.org/wiki/Halling_(dance)', 'Halling (dance)', 'Wikipedia: the dance, the kast and where it comes from'],
              ['https://snl.no/halling', 'Halling', 'Store norske leksikon, the Norwegian encyclopedia (in Norwegian)'],
              ['https://www.allaroundthisworld.com/ancient-halling-dance/', 'Learn the moves', 'Links to Frikar\'s videos of each halling step, including the kast']] },
-    { id: 'oneil', img: 'ronald', pos: '50% 22%', k: 'Christ', h: 'Where O\'Neil comes from', p: 'christ-oneil-berget-1872,ronald-oneil-berget-1908',
+    { id: 'oneil', img: 'ronald', pos: '50% 22%', bg: ['chicago-olearys-1906', '50% 30%', 'O\'Leary\'s saloon, 4183 South Halsted Street, Canaryville, Chicago, 1906. Chicago Daily News collection, Chicago History Museum, DN-0003965'], k: 'Christ', h: 'Where O\'Neil comes from', p: 'christ-oneil-berget-1872,ronald-oneil-berget-1908',
       l: 'It is not Norwegian. He was born Christen Olsen Berget.',
       b: ['Around 1900 Christ was in Chicago on his own, in his late twenties. His best friends there were Irish, and he took his middle name, O\'Neil, from them.',
           'He was far from the only Norwegian in the city. By 1900 Chicago had <b>41,551 Norwegian residents</b>, most of them on the Northwest Side, around Milwaukee Avenue, Wicker Park and Humboldt Park.',
@@ -1021,7 +1046,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
              ['https://www.loc.gov/item/98507267/', 'Madison Street, Chicago, about 1899', 'Photograph, Library of Congress'],
              ['https://www.loc.gov/item/2007663563/', 'Panorama of Chicago, about 1902', 'Photograph by J. W. Taylor, Library of Congress'],
              ['https://explore.chicagocollections.org/image/chicagohistory/71/3j3974j/', 'Children with Norwegian flags on Norwegian Independence Day', 'Chicago Daily News photograph, 1900s'],
-             ['https://encyclopedia.chicagohistory.org/pages/911.html', 'Norwegians in Chicago', 'Encyclopedia of Chicago']] },
+             ['https://encyclopedia.chicagohistory.org/pages/911.html', 'Norwegians in Chicago', 'Encyclopedia of Chicago'],
+             ['https://www.wttw.com/node/49210', 'O\'Leary\'s saloon, 1906 (the photograph behind this page)', 'WTTW: an Irish saloon in Canaryville run by the son of Catherine O\'Leary of the 1871 Great Chicago Fire'],
+             ['https://encyclopedia.chicagohistory.org/pages/11142.html', 'Canaryville', 'Encyclopedia of Chicago: the Irish neighbourhood by the stockyards']] },
     { id: 'live', img: 'probate1697-a', pos: '50% 30%', k: 'Generation 2', h: 'Live Andersdatter\'s three marriages', p: 'live-andersdatter-jellum-1631,osten-levorsen-kvie-1625',
       l: 'She came from Eggedal and married into Kvie.',
       b: ['Two probate cards record her as a widow twice over, in 1672 and 1697. Each card lists her children by each marriage.',
@@ -1069,6 +1096,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   function story(id) {
     var i = -1; STORIES.forEach(function (st, j) { if (st.id === id) i = j; });
     $('#st-list').hidden = i >= 0; $('#st-art').hidden = i < 0;
+    var bg = i >= 0 && STORIES[i].bg; $('#st-bg').hidden = !bg;
+    if (bg) { $('#st-bg').style.backgroundImage = 'url(img/' + bg[0] + '.jpg)'; $('#st-bg').style.backgroundPosition = bg[1]; }
     if (i < 0) return;
     var st = STORIES[i], prev = STORIES[i - 1], next = STORIES[i + 1];
     $('#st-art').innerHTML = '<a class="st-back mono" href="#stories">← All short stories</a><span class="mono" style="display:block">' + esc(st.k) + '</span><h1>' + esc(st.h) + '</h1><p class="lead">' + esc(st.l) + '</p>' +
@@ -1076,7 +1105,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
       '<div class="body">' + st.b.map(function (t) { if (typeof t === 'string') return '<p>' + t + '</p>'; if (t.h) return '<h2>' + esc(t.h) + '</h2>'; return '<figure><img src="img/' + t.fig + '.jpg" alt="" data-lb="' + esc(t.cap) + '"><figcaption class="mono">' + esc(t.cap) + '</figcaption></figure>'; }).join('') + '</div>' +
       (st.p ? '<p class="ppl"><span class="mono">People</span>' + pplLinks(st.p) + '</p>' : '') +
       (st.more.length ? '<div class="st-more"><span class="mono">Look further</span><ul>' + st.more.map(function (m) { return '<li><a href="' + m[0] + '" target="_blank" rel="noopener"><b>' + esc(m[1]) + '</b><span>' + esc(m[2]) + '</span></a></li>'; }).join('') + '</ul></div>' : '') +
-      '<div class="st-next">' + (prev ? '<a href="#story-' + prev.id + '"><span class="mono">← Previous</span><b>' + esc(prev.h) + '</b></a>' : '') + (next ? '<a href="#story-' + next.id + '"><span class="mono">Next →</span><b>' + esc(next.h) + '</b></a>' : '') + '</div>';
+      (st.bg ? '<p class="mono st-credit">Background: ' + esc(st.bg[2]) + '</p>' : '') + '<div class="st-next">' + (prev ? '<a href="#story-' + prev.id + '"><span class="mono">← Previous</span><b>' + esc(prev.h) + '</b></a>' : '') + (next ? '<a href="#story-' + next.id + '"><span class="mono">Next →</span><b>' + esc(next.h) + '</b></a>' : '') + '</div>';
     zm();
   }
 
