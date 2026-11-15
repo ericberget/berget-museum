@@ -482,10 +482,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   <div class="leg" id="leg" aria-live="polite"></div>
   <div class="ctl"><button type="button" id="prev">Back</button><button type="button" class="go" id="next">Next stop</button><span class="mono">solid line: recorded · dotted: a guess · sea route drawn approximately</span></div>
   <p class="ppl" style="margin-top:18px"><span class="mono">Travelling in 1880</span><button type="button" class="pn" data-p="ole-amundsen-berget-1839">Ole, 41</button><button type="button" class="pn" data-p="nellie-berg-1869">Gunhild (Nellie), 11</button><button type="button" class="pn" data-p="christ-oneil-berget-1872">Christ, 8</button><span class="mono">Following in May 1881</span><button type="button" class="pn" data-p="betsy-berget-1865">Betsy</button><button type="button" class="pn" data-p="amund-berg-1867">Amund</button></p>
-</div></section>
-
-<section class="view" id="v-ship" hidden><div class="gut">
-  <div class="head"><span class="mono">View 7 · one ship</span><h1>The ship</h1><p>The Kristiania police ledger names one ship: the Angelo. Ole, Gunhild and Christ boarded her on 27 August 1880, and she took them across the North Sea to Hull.</p></div>
+  <div id="ship-part" style="scroll-margin-top:90px;margin-top:clamp(48px,7vw,96px);padding-top:clamp(24px,4vw,48px);border-top:1px solid var(--rule)"><span class="mono">One ship</span><h2 class="nm-h" style="margin-top:8px">The ship</h2><p class="nm-p">The Kristiania police ledger names one ship: the Angelo. Ole, Gunhild and Christ boarded her on 27 August 1880, and she took them across the North Sea to Hull.</p></div>
 
   <div class="sh-top">
     <figure><img src="img/angelo.jpg" data-lb="The S/S Angelo, from The Illustrated London News, 1874" alt="An engraving of a steamship with a single funnel and three masts under sail, in a rough sea."><figcaption class="mono">The Illustrated London News, 1874</figcaption></figure>
@@ -973,7 +970,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   var TAG = { record: '<span class="tag record">Record</span>', family: '<span class="tag">Family</span>', guess: '<span class="tag guess">Guess</span>' };
 
   var PPL = window.PEOPLE || {}, A = window.ATLAS;
-  var VIEWS = [['faces', 'Faces'], ['name', 'The name'], ['farm', 'The farm'], ['stories', 'Short stories'], ['line', 'The line'], ['crossing', 'The crossing'], ['ship', 'The ship'], ['ledger', 'The ledger'], ['church', 'The church'], ['rock', 'The rock'], ['unsolved', 'Unsolved'], ['home', 'Wall']];
+  var VIEWS = [['faces', 'Faces'], ['name', 'The name'], ['farm', 'The farm'], ['stories', 'Short stories'], ['line', 'The line'], ['crossing', 'The crossing'], ['ledger', 'The ledger'], ['church', 'The church'], ['rock', 'The rock'], ['unsolved', 'Unsolved'], ['home', 'Wall']];
   var EXTRA = [['more-faces', 'More faces', 'The Fyllings, and Ron Berget\'s brothers and sisters'], ['nes', 'Nes in Ole\'s time', 'How big his world was'], ['art', 'Nes and Hallingdal in art', 'Paintings and drawings of the valley']];
   var INMENU = [['unsolved', 'Unsolved', 'Open questions'], ['home', 'The wall', 'Back to the start']];
   $('#xmenu').innerHTML = EXTRA.concat(INMENU).map(function (v) { return '<a href="#' + v[0] + '">' + v[1] + '<small>' + v[2] + '</small></a>'; }).join('');
@@ -986,12 +983,13 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   $('#nav').innerHTML = VIEWS.filter(function (v) { return !INMENU.some(function (m) { return m[0] === v[0]; }); }).map(function (v) { return '<a href="#' + v[0] + '">' + v[1] + '</a>'; }).join('');
   function show() {
     var name = location.hash.replace('#', ''), sid = '';
+    var toShip = name === 'ship'; if (toShip) name = 'crossing';
     if (name.indexOf('story-') === 0) { sid = name.slice(6); name = 'stories'; } var sub = EXTRA.some(function (v) { return v[0] === name; });
     if (!sub && !VIEWS.some(function (v) { return v[0] === name; })) name = 'home';
     if (name === 'stories' && typeof story === 'function') story(sid);
     VIEWS.forEach(function (v) { $('#v-' + v[0]).hidden = v[0] !== name; }); EXTRA.forEach(function (v) { $('#v-' + v[0]).hidden = v[0] !== name; }); $('#xbtn').classList.toggle('on', sub || name === 'unsolved'); document.querySelectorAll('#xmenu a').forEach(function (a) { if (a.getAttribute('href') === '#' + name) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); }); xclose();
     document.querySelectorAll('#nav a').forEach(function (a) { if (a.getAttribute('href') === '#' + name) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0); if (toShip && $('#ship-part')) $('#ship-part').scrollIntoView();
     if (window.ROCK) window.ROCK.show(name === 'rock');
   }
   window.addEventListener('hashchange', show);
