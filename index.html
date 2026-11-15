@@ -1183,9 +1183,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   ];
   $('#prints').innerHTML = PRINTS.map(function (p, i) { return '<button type="button" class="print' + (p.wide ? ' wide' : '') + '" style="--a:' + p.a + 'deg" data-i="' + i + '"><img src="img/' + p.img + '.jpg" alt="' + esc(p.c) + '" loading="lazy"' + (p.pos ? ' style="object-position:' + p.pos + '"' : '') + '><span>' + esc(p.c) + '</span></button>'; }).join('');
   /* pictures that also have a restored copy: original file name -> restored file name */
-  var RESTORED = { 'christ': 'christ-restored', 'threshing': 'threshing-restored', 'ronald': 'ronald-restored', 'ronald-confirmation': 'ronald-confirmation-restored', 'portrait': 'portrait-restored', 'ole': 'ole-restored', 'birgit': 'birgit-restored', 'schoolhouse': 'schoolhouse-reimagined', 'farm10': 'farm10-reimagined', 'farm08': 'farm08-reimagined', 'farm-ronald-step': 'farm-ronald-step-reimagined' };
+  var RESTORED = { 'christ': 'christ-restored', 'threshing': 'threshing-restored', 'ronald': 'ronald-restored', 'ronald-confirmation': 'ronald-confirmation-restored', 'portrait': 'portrait-restored', 'ole': 'ole-restored', 'birgit': 'birgit-restored' };
   /* pictures whose second version is a painted reimagining rather than a restoration */
-  var REIMAGINED = { 'schoolhouse': 1, 'farm10': 1, 'farm08': 1, 'farm-ronald-step': 1 };
+  var REIMAGINED = {};
   function zm() { document.querySelectorAll('img[data-lb]').forEach(function (im) { if (im.parentNode.classList.contains('zm')) return; var w = document.createElement('span'); w.className = 'zm'; im.parentNode.insertBefore(w, im); w.appendChild(im); var b = document.createElement('button'); b.type = 'button'; b.className = 'zb'; b.setAttribute('aria-label', 'Enlarge this picture'); b.textContent = '+'; w.appendChild(b);
     var m = /img\/([^\/.]+)\.jpg$/.exec(im.getAttribute('src')); if (m && RESTORED[m[1]]) { im.dataset.rest = RESTORED[m[1]]; if (REIMAGINED[m[1]]) im.dataset.kind = 're'; } }); }
 
