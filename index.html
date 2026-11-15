@@ -345,6 +345,19 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .st-art h1 { font-family: "Newsreader", Georgia, serif; font-weight: 600; font-size: clamp(36px, 5.4vw, 64px); line-height: 1.02; letter-spacing: -.03em; margin: 8px 0 18px; }
 .st-art .lead { font-size: clamp(18px, 1.8vw, 22px); line-height: 1.45; }
 .st-art figure { margin: 30px 0; }
+.bw { margin: 34px 0 30px; } .bw svg { display: block; width: 100%; height: auto; }
+.bw .stt { fill: rgba(237,243,245,.035); stroke: rgba(237,243,245,.22); stroke-width: .8; }
+.bw .sl { font-family: var(--mono); font-size: 13px; letter-spacing: .18em; fill: rgba(237,243,245,.2); text-anchor: middle; text-transform: uppercase; }
+.bw .rf circle { fill: rgba(157,178,189,.55); } .bw .rf text { font-family: var(--mono); font-size: 11px; fill: rgba(157,178,189,.75); }
+.bw .rt { fill: none; stroke: var(--flare); stroke-width: 2.2; stroke-linecap: round; stroke-dasharray: 5 6; }
+.bw .rt.go { stroke-dasharray: none; }
+.bw .pt circle { fill: var(--bg); stroke: var(--flare); stroke-width: 2; } .bw .pt { opacity: 0; transition: opacity .5s; } .bw .pt.on { opacity: 1; }
+.bw .pt .n { font-size: 14px; font-weight: 600; fill: var(--ink); } .bw .pt .y { font-family: var(--mono); font-size: 11px; fill: var(--flare); letter-spacing: .06em; } .bw .pt .d { font-size: 11.5px; fill: var(--muted); }
+.bw .ld { stroke: rgba(237,243,245,.3); stroke-width: .8; }
+.bw .wg { fill: var(--flare); }
+.bw-bar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 10px; }
+.bw-bar button { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); background: none; border: 1px solid var(--rule); border-radius: 99px; padding: 6px 12px; cursor: pointer; }
+.bw-bar button:hover { color: var(--flare); border-color: var(--flare); }
 .st-art figure .zm { display: inline-block; max-width: 100%; padding: 10px; background: #f3efe6; border-radius: 3px; }
 .st-art figure img { display: block; width: auto; max-width: 100%; max-height: 560px; border-radius: 1px; }
 .st-art figcaption { margin-top: 8px; }
@@ -962,6 +975,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 <script src="data/rock.js"></script>
 <script src="data/atlas.js"></script>
 <script src="data/people.js"></script>
+<script src="data/broom.js"></script>
 <script>
 (function () {
   'use strict';
@@ -1308,6 +1322,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
           'In <b>1899</b> he left Brodhead, a town near Orfordville, with a team of horses hitched to a light spring wagon, the kind then called a Democrat wagon. It was loaded with brooms, and he sold them along the way.',
           'Winter caught him at Canby, Minnesota, and he stayed and worked there until spring. In 1900 he went on to Dakota and spent the next winter in a coal mine at Wilton. In the spring of 1901 he and his horses helped rebuild the railroad from Wilton to Washburn, and that fall he worked on J. P. Peterson\'s ranch near Washburn.',
           'In the spring of <b>1902</b> he homesteaded north of Turtle Lake. As well as farming, he bought a steam thresher and threshed for the neighbours.',
+          { map: 'broom' },
           'On 19 July 1906 he married Mary Vigdahl. Her family had homesteaded two miles north of his place, and their farm became the Berget home for the rest of his life.',
           'A neighbour, Tom Boe, told the same book that when his mother fell ill, Christ drove her to Underwood in a spring wagon, with Mrs. Martin Torkelson holding an umbrella over her on the long ride.',
           'Christ was ill in bed for nearly a year before he died on 9 November 1945. He is buried in the St. Olaf Lutheran cemetery.',
@@ -1382,6 +1397,35 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   $('#cards').innerHTML = STORIES.map(function (st) {
     return '<a class="st-tile" href="#story-' + st.id + '"><span class="ph">' + (st.img ? '<img src="img/' + (st.thumb || st.img) + '.jpg" alt="" loading="lazy" style="object-position:' + (st.tpos || st.pos || '50% 50%') + '">' : '<b>' + esc(st.n) + '</b>') + '</span><span class="mono">' + esc(st.k) + '</span><h3>' + esc(st.h) + '</h3><p>' + esc(st.l) + '</p></a>';
   }).join('');
+  function broomMap(el) {
+    var B = window.BROOM; if (!B) return; var P = B.pts, ns = 'http://www.w3.org/2000/svg';
+    /* label positions: the three Dakota stops sit close together, so they get a stacked callout */
+    var LB = [[-12, 30, 'end'], [-14, -30, 'end'], [110, 25, 'start'], [121, -17, 'start'], [114, -52, 'start']];
+    var h = '<svg viewBox="0 0 ' + B.w + ' ' + B.h + '" role="img" aria-label="Map of Christ\'s route from Brodhead, Wisconsin, in 1899, to Canby, Minnesota, then Wilton and Washburn, North Dakota, and his homestead near Turtle Lake in 1902.">';
+    h += '<path class="stt" d="' + B.states + '"/>';
+    Object.keys(B.labels).forEach(function (k) { var c = B.labels[k], o = { 'Minnesota': [0, 40], 'North Dakota': [-50, 78], 'Wisconsin': [10, -10], 'South Dakota': [0, 0], 'Iowa': [0, 0] }[k] || [0, 0]; h += '<text class="sl" x="' + (c[0] + o[0]) + '" y="' + (c[1] + o[1]) + '">' + k + '</text>'; });
+    B.refs.forEach(function (r) { var dy = r.n === 'Madison' ? -8 : 14, dx = r.n === 'Bismarck' ? -8 : 7, an = r.n === 'Bismarck' ? 'end' : 'start'; h += '<g class="rf"><circle cx="' + r.x + '" cy="' + r.y + '" r="2.5"/><text x="' + (r.x + dx) + '" y="' + (r.y + dy) + '" text-anchor="' + an + '">' + r.n + '</text></g>'; });
+    var d = 'M' + P[0].x + ',' + P[0].y;
+    for (var i = 1; i < P.length; i++) { var a = P[i - 1], b = P[i], mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2, bend = Math.hypot(b.x - a.x, b.y - a.y) * .12; d += 'Q' + (mx + bend * .3) + ',' + (my + bend) + ' ' + b.x + ',' + b.y; }
+    h += '<path class="rt" id="bwrt" d="' + d + '"/><circle class="wg" id="bwwg" r="5" cx="' + P[0].x + '" cy="' + P[0].y + '"/>';
+    P.forEach(function (p, i) { var l = LB[i], lx = p.x + l[0], ly = p.y + l[1];
+      h += '<g class="pt" data-i="' + i + '">' + (i >= 2 ? '<line class="ld" x1="' + p.x + '" y1="' + p.y + '" x2="' + (lx - 6) + '" y2="' + (ly - 4) + '"/>' : '') + '<circle cx="' + p.x + '" cy="' + p.y + '" r="5"/>' +
+        '<text class="y" x="' + lx + '" y="' + (ly - 16) + '" text-anchor="' + l[2] + '">' + p.y0 + '</text><text class="n" x="' + lx + '" y="' + ly + '" text-anchor="' + l[2] + '">' + p.n + '</text><text class="d" x="' + lx + '" y="' + (ly + 15) + '" text-anchor="' + l[2] + '">' + p.t + '</text></g>'; });
+    h += '</svg><div class="bw-bar"><span class="mono" style="color:var(--muted);font-size:11px">Straight lines between the places the book names. The roads he took are not known.</span><button type="button" id="bwgo">Play again</button></div>';
+    el.innerHTML = h;
+    var rt = el.querySelector('#bwrt'), wg = el.querySelector('#bwwg'), pts = el.querySelectorAll('.pt'), L = rt.getTotalLength(), raf = 0;
+    var stops = P.map(function (p) { var best = 0, bd = 1e9; for (var s = 0; s <= L; s += 2) { var q = rt.getPointAtLength(s), dd = Math.hypot(q.x - p.x, q.y - p.y); if (dd < bd) { bd = dd; best = s; } } return best; }); stops[0] = 0; stops[stops.length - 1] = L;
+    function show(len) { rt.style.strokeDasharray = len + ' ' + L; var q = rt.getPointAtLength(len); wg.setAttribute('cx', q.x); wg.setAttribute('cy', q.y); pts.forEach(function (g, i) { g.classList.toggle('on', len >= stops[i] - 1); }); }
+    function play() { cancelAnimationFrame(raf); rt.classList.add('go'); var t0 = 0, SEG = 1600, HOLD = 700, seg = 0, tl = [], acc = 0;
+      for (var k = 1; k < stops.length; k++) { tl.push([acc + HOLD, acc + HOLD + SEG, stops[k - 1], stops[k]]); acc += HOLD + SEG; }
+      function f(now) { if (!t0) t0 = now; var t = now - t0, len = L; for (var k = 0; k < tl.length; k++) { var z = tl[k]; if (t < z[0]) { len = z[2]; break; } if (t < z[1]) { var u = (t - z[0]) / (z[1] - z[0]); u = u < .5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2; len = z[2] + (z[3] - z[2]) * u; break; } }
+        show(len); if (t < acc) raf = requestAnimationFrame(f); }
+      raf = requestAnimationFrame(f); }
+    el.querySelector('#bwgo').addEventListener('click', play);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) { rt.classList.add('go'); show(L); return; }
+    show(0); var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); play(); } }, { threshold: .45 }); io.observe(el);
+  }
+
   function story(id) {
     var i = -1; STORIES.forEach(function (st, j) { if (st.id === id) i = j; });
     $('#st-list').hidden = i >= 0; $('#st-art').hidden = i < 0;
@@ -1391,11 +1435,11 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     var st = STORIES[i], prev = STORIES[i - 1], next = STORIES[i + 1];
     $('#st-art').innerHTML = '<a class="st-back mono" href="#stories">← All short stories</a><span class="mono" style="display:block">' + esc(st.k) + '</span><h1>' + esc(st.h) + '</h1><p class="lead">' + esc(st.l) + '</p>' +
       (st.img ? '<figure><img src="img/' + st.img + '.jpg" alt="" data-lb="' + esc(st.cap || st.h) + '">' + (st.cap ? '<figcaption class="mono">' + esc(st.cap) + '</figcaption>' : '') + '</figure>' : '') +
-      '<div class="body">' + st.b.map(function (t) { if (typeof t === 'string') return '<p>' + t + '</p>'; if (t.h) return '<h2>' + esc(t.h) + '</h2>'; return '<figure><img src="img/' + t.fig + '.jpg" alt="" data-lb="' + esc(t.cap) + '"><figcaption class="mono">' + esc(t.cap) + '</figcaption></figure>'; }).join('') + '</div>' +
+      '<div class="body">' + st.b.map(function (t) { if (typeof t === 'string') return '<p>' + t + '</p>'; if (t.h) return '<h2>' + esc(t.h) + '</h2>'; if (t.map) return '<div class="bw" id="bw"></div>'; return '<figure><img src="img/' + t.fig + '.jpg" alt="" data-lb="' + esc(t.cap) + '"><figcaption class="mono">' + esc(t.cap) + '</figcaption></figure>'; }).join('') + '</div>' +
       (st.p ? '<p class="ppl"><span class="mono">People</span>' + pplLinks(st.p) + '</p>' : '') +
       (st.more.length ? '<div class="st-more"><span class="mono">Look further</span><ul>' + st.more.map(function (m) { return '<li><a href="' + m[0] + '" target="_blank" rel="noopener"><b>' + esc(m[1]) + '</b><span>' + esc(m[2]) + '</span></a></li>'; }).join('') + '</ul></div>' : '') +
       (st.bg ? '<p class="mono st-credit">Background: ' + esc(st.bg[2]) + '</p>' : '') + '<div class="st-next">' + (prev ? '<a href="#story-' + prev.id + '"><span class="mono">← Previous</span><b>' + esc(prev.h) + '</b></a>' : '') + (next ? '<a href="#story-' + next.id + '"><span class="mono">Next →</span><b>' + esc(next.h) + '</b></a>' : '') + '</div>';
-    zm();
+    zm(); if ($('#bw')) broomMap($('#bw'));
   }
 
   /* 8 unsolved */
