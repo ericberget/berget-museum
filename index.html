@@ -1404,9 +1404,14 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
           { h: 'The oldest paper on the branch' },
           '<b>1546:</b> an estate division (skifte) after Halvor Helgesen and his wife Turi Eivindsdatter, the parents of Steinar Kravik. It is the earliest document anyone cites for this line. Odd Arne Helleberg discusses it in the local history journal Gjallarhorn, no. 26, autumn 2000. We have not seen it ourselves.',
           'The same researchers give Steinar Halvorsen Kravik as born about 1505 and died about 1568, married to Ragnhild Tordsdatter Frøvoll from Sigdal. That matches the tree.',
+          { h: 'Something from the farm' },
+          'In the middle of the 1800s an old wooden lyre turned up on the Kravik farm. It is a plucked instrument with holes for seven tuning pegs, carved with zigzags and scales along the arms. The soundboard is gone.',
+          'It was long thought to be from the 1300s, which would have made it the only medieval lyre left in Europe. A carbon-14 test in 2015 showed the wood is younger: the lyre was made after 1475, and most likely after 1556. That is the time of Steinar Halvorsen Kravik and his children. It came to the University\'s collection of antiquities in 1864 and is now at the Norsk Folkemuseum in Oslo.',
+          'Nobody knows who played it. But if the branch is right, it was made and played on the farm where these people lived.',
+          { fig: 'kravik-lyre', cap: 'The Kravik lyre, made after 1475 and most likely after 1556. Norsk Folkemuseum, Oslo.' },
           { h: 'What would settle it' },
           'A copy of the 1546 estate division, and Helleberg\'s article. After that, the farm histories for Nore and Rollag (the bygdebøker) and the tax lists of the 1500s. Nothing earlier than 1546 has been cited for anyone above Halvor.'],
-      more: [['https://forum.nasjonalarkivet.no/topic/94680-8746-halvor-kravik-nore-buskerud-early-1500/', 'Halvor Kravik, Nore, early 1500s', 'National Archives forum, 2002 to 2003. The Halvor Helgesen correction and the 1546 estate division']] }
+      more: [['https://snl.no/lyre_-_strengeinstrument', 'Lyre', 'Store norske leksikon, on the Kravik lyre and its 2015 carbon dating'], ['https://forum.nasjonalarkivet.no/topic/94680-8746-halvor-kravik-nore-buskerud-early-1500/', 'Halvor Kravik, Nore, early 1500s', 'National Archives forum, 2002 to 2003. The Halvor Helgesen correction and the 1546 estate division']] }
   ];
   var pplLinks = function (ids) { return (ids || '').split(',').filter(function (id) { return PPL[id]; }).map(function (id) { return '<button type="button" class="pn" data-p="' + id + '">' + esc(PPL[id].n) + '</button>'; }).join(''); };
   $('#cards').innerHTML = STORIES.map(function (st) {
