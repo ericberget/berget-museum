@@ -1400,10 +1400,13 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
           { h: 'Treat it as unproven' },
           'No record is attached to anyone on the branch. These are names and years in the tree file, nothing more. Norwegian church books mostly begin in the 1600s, so anything earlier rests on scattered tax lists and court records, and family trees online often copy each other for this period.',
           'Several people are entered in the tree twice, including Ragnhild Toresdatter Kravik and Steinar Hallvardsen Skala.',
-          'One name does not fit. Halvor, born about 1460, is listed as <b>Halvor Steinarson</b>, which means son of Steinar, but the tree gives his father as Helge. Either the name or the link is wrong.',
+          'One name in the tree did not fit. Halvor, born about 1470 to 1480, is listed as <b>Halvor Steinarson</b>, which means son of Steinar, but the tree gives his father as Helge. Researchers who have worked on the Kravik family say the Nore farm history got his name wrong: contemporary documents call him <b>Halvor Helgesen</b>. So the link to Helge holds, and the name in the tree is the mistake. The graphic uses Halvor Helgesen.',
+          { h: 'The oldest paper on the branch' },
+          '<b>1546:</b> an estate division (skifte) after Halvor Helgesen and his wife Turi Eivindsdatter, the parents of Steinar Kravik. It is the earliest document anyone cites for this line. Odd Arne Helleberg discusses it in the local history journal Gjallarhorn, no. 26, autumn 2000. We have not seen it ourselves.',
+          'The same researchers give Steinar Halvorsen Kravik as born about 1505 and died about 1568, married to Ragnhild Tordsdatter Frøvoll from Sigdal. That matches the tree.',
           { h: 'What would settle it' },
-          'The farm histories for Nore and Rollag (the bygdebøker), which trace each farm\'s owners, and the tax lists of the 1500s. If the Kravik owners there match these names, the branch gets a lot stronger.'],
-      more: [] }
+          'A copy of the 1546 estate division, and Helleberg\'s article. After that, the farm histories for Nore and Rollag (the bygdebøker) and the tax lists of the 1500s. Nothing earlier than 1546 has been cited for anyone above Halvor.'],
+      more: [['https://forum.nasjonalarkivet.no/topic/94680-8746-halvor-kravik-nore-buskerud-early-1500/', 'Halvor Kravik, Nore, early 1500s', 'National Archives forum, 2002 to 2003. The Halvor Helgesen correction and the 1546 estate division']] }
   ];
   var pplLinks = function (ids) { return (ids || '').split(',').filter(function (id) { return PPL[id]; }).map(function (id) { return '<button type="button" class="pn" data-p="' + id + '">' + esc(PPL[id].n) + '</button>'; }).join(''); };
   $('#cards').innerHTML = STORIES.map(function (st) {
@@ -1447,8 +1450,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
       [1579, 'Steinar Steinarsen Skala', '1579 · Skala', -1, ['Father: Steinar Hallvardsen Skala, 1546']],
       [1560, 'Ragnhild Toresdatter Kravik', '1560 · Nore', 1, ['Mother: Bergit Tjostolvsdatter Fossan, 1545', 'Her parents: Tjostolv Gunnulvsson Tråen and Ingeliev Narvesdatter']],
       [1535, 'Tore Stenersen Kravik', 'about 1535 · Nore', -1, ['Mother: Ragnild Toresdatter Frøvoll, 1515']],
-      [1506, 'Steinar Kravik', '1506 · Kravik', 1, []],
-      [1460, 'Halvor Steinarson Kravik', '1460 · Kravik, Nore', -1, ['Mother: listed only as Gjellerud, 1425']],
+      [1505, 'Steinar Halvorsen Kravik', 'about 1505 to about 1568 · Kravik', 1, ['Mother: Turi Eivindsdatter Busnes, about 1480', '1546: estate division after his parents']],
+      [1475, 'Halvor Helgesen Kravik', 'about 1470 to 1480 · Kravik, Nore', -1, ['The tree calls him Halvor Steinarson', 'Mother: listed only as Gjellerud, 1425']],
       [1420, 'Helge Hallvorsen Kravik', '1420 · Nore, Numedal', 1, ['Mother: Ingeborg Helgesdatter, 1385']],
       [1390, 'Hallvard Bjørnson Kravik', '1390 · Nore', -1, ['The oldest name in the tree']]];
     var TY = function (i) { return Y0 + i * GAP; }, BY = function (j) { return Y0 + GAP - j * BG; }, BXi = function (j) { return 372 + j * 50; }, W = 1000, H = TY(12) + 70;
