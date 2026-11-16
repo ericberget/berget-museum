@@ -357,6 +357,44 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .ww-r .pn { font-size: 16px; font-weight: 600; }
 .ww-r .yrs { display: block; font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 3px; }
 .ww-r .on { display: block; font-size: 12.5px; color: var(--muted); margin-top: 5px; line-height: 1.5; } .ww-r .on a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); margin-right: 8px; } .ww-r .on a:hover { color: var(--flare); border-color: var(--flare); }
+.tl-hero { padding: 56px 0 30px; } .tl-hero h1 { margin-top: 8px; } .tl-hero p { max-width: 640px; color: var(--muted); font-size: 18px; line-height: 1.55; }
+.tl-key { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 18px; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.tl-key i { display: inline-block; width: 18px; height: 3px; vertical-align: middle; margin-right: 8px; border-radius: 2px; } .tl-key .kf { background: var(--flare); } .tl-key .kw { background: rgba(237,243,245,.35); } .tl-key .ku { background: repeating-linear-gradient(90deg, var(--flare) 0 4px, transparent 4px 7px); }
+.tl-wrap { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 0 40px; padding-bottom: 120px; }
+.tl-rail { position: relative; } .tl-year { position: sticky; top: 96px; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 92px; line-height: 1; letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 1.5px rgba(237,243,245,.55); font-variant-numeric: tabular-nums; }
+.tl-era { position: sticky; top: 200px; margin-top: 14px; font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--flare); }
+.tl { position: relative; padding-left: 44px; } .tl-spine { position: absolute; left: 11px; top: 0; bottom: 0; width: 2px; background: rgba(237,243,245,.1); } .tl-spine i { position: absolute; left: 0; top: 0; width: 2px; height: 0; background: var(--flare); box-shadow: 0 0 10px rgba(255,122,79,.5); }
+.tl-ev { position: relative; margin: 0 0 30px; opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); } .tl-ev.in { opacity: 1; transform: none; }
+.tl-ev::before { content: ''; position: absolute; left: -39px; top: 8px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid rgba(237,243,245,.35); transition: border-color .4s, background .4s, box-shadow .4s; }
+.tl-ev.f::before { border-color: var(--flare); } .tl-ev.f.in::before { background: var(--flare); box-shadow: 0 0 0 5px rgba(255,122,79,.15); }
+.tl-ev.u::before { border-style: dashed; background: var(--bg) !important; }
+.tl-d { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; color: var(--muted); } .tl-ev.f .tl-d { color: var(--flare); }
+.tl-ev.f .tl-c { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 22px; align-items: start; background: linear-gradient(180deg, rgba(237,243,245,.045), rgba(237,243,245,.015)); border: 1px solid var(--rule); border-radius: 10px; padding: 20px 22px; margin-top: 8px; }
+.tl-ev.f.u .tl-c { border-style: dashed; }
+.tl-ev h3 { font-size: 21px; line-height: 1.25; margin: 0 0 8px; font-weight: 700; } .tl-ev p { margin: 0; color: var(--muted); font-size: 15.5px; line-height: 1.6; max-width: 620px; }
+.tl-ev .go { display: inline-block; margin-top: 12px; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--flare); text-decoration: none; } .tl-ev .go:hover { text-decoration: underline; }
+.tl-ev .ph { width: 150px; height: 150px; object-fit: cover; border-radius: 6px; background: #0e1113; cursor: zoom-in; filter: saturate(.9); }
+.tl-ev .tag { margin-left: 8px; }
+.tl-ev.w { margin-bottom: 22px; } .tl-ev.w .tl-c { margin-top: 4px; padding-left: 14px; border-left: 2px solid rgba(237,243,245,.12); }
+.tl-ev.w h3 { font-size: 16px; font-weight: 600; color: rgba(237,243,245,.82); margin-bottom: 4px; } .tl-ev.w p { font-size: 14px; }
+.tl-ev.w .tl-d::after { content: '  ·  in the world'; text-transform: uppercase; font-size: 10px; letter-spacing: .12em; opacity: .7; }
+.tl-gap { position: relative; margin: 6px 0 34px -44px; padding-left: 44px; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(237,243,245,.35); }
+.tl-gap::before { content: ''; position: absolute; left: 6px; top: -10px; bottom: -10px; width: 12px; background: repeating-linear-gradient(180deg, var(--bg) 0 5px, transparent 5px 9px); }
+.tl-era-h { position: relative; margin: 50px 0 40px -44px; border-radius: 12px; overflow: hidden; min-height: 280px; display: flex; align-items: flex-end; padding: 34px 34px 30px; background: #0e1113; opacity: 0; transform: scale(.98); transition: opacity .9s, transform .9s; }
+.tl-era-h.in { opacity: 1; transform: none; }
+.tl-era-h .bg { position: absolute; inset: -10% 0; background-size: cover; background-position: center; filter: grayscale(.35) brightness(.55); will-change: transform; }
+.tl-era-h::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(21,25,28,.1) 0%, rgba(21,25,28,.85) 100%); }
+.tl-era-h > div { position: relative; z-index: 1; } .tl-era-h .mono { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--flare); }
+.tl-era-h h2 { font-size: clamp(32px, 4.6vw, 54px); line-height: 1.02; margin: 8px 0 10px; letter-spacing: -.02em; } .tl-era-h p { margin: 0; max-width: 560px; color: rgba(237,243,245,.82); font-size: 16px; line-height: 1.55; }
+@media (max-width: 900px) {
+  .tl-wrap { grid-template-columns: minmax(0, 1fr); }
+  .tl-rail { position: sticky; top: 56px; z-index: 5; margin: 0 -20px 10px; padding: 8px 20px; background: rgba(21,25,28,.94); backdrop-filter: blur(6px); border-bottom: 1px solid var(--rule); display: flex; align-items: baseline; gap: 14px; }
+  .tl-year { position: static; font-size: 34px; -webkit-text-stroke-width: 1px; } .tl-era { position: static; margin: 0; }
+  .tl { padding-left: 34px; } .tl-spine { left: 6px; } .tl-ev::before { left: -34px; } .tl-era-h, .tl-gap { margin-left: -34px; } .tl-gap { padding-left: 34px; }
+  .tl-ev.f .tl-c { grid-template-columns: minmax(0, 1fr); } .tl-ev .ph { width: 100%; height: 190px; order: -1; }
+  .tl-era-h { min-height: 220px; padding: 24px; }
+}
+@media (prefers-reduced-motion: reduce) { .tl-ev, .tl-era-h { opacity: 1; transform: none; transition: none; } }
 .more-btn { display: grid; gap: 6px; margin-top: 64px; padding: 28px 32px; border: 1px solid rgba(237,243,245,.18); border-radius: var(--r); text-decoration: none; color: inherit; transition: border-color .2s, background .2s; }
 .more-btn b { font-size: clamp(26px,3.4vw,40px); font-weight: 700; } .more-btn small { color: var(--muted); font-size: 15px; }
 .more-btn:hover { border-color: var(--flare); background: rgba(237,243,245,.03); } .more-btn:hover b { color: var(--flare); }
@@ -676,6 +714,11 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   </div>
   <a class="more-btn" href="#more-faces"><span class="mono">Keep going</span><b>More faces →</b><small>The Fyllings, Ron Berget's brothers and the rest of the family</small></a>
 </div></section>
+
+<section class="view" id="v-timeline" hidden>
+  <div class="tl-hero"><div class="gut"><div class="head"><span class="mono">Extra · 1390 to today</span><h1>The timeline</h1><p>Six hundred years of one family, from a farm in Numedal to the prairie north of Turtle Lake. Orange is the family. Grey is what was happening around them.</p></div><div class="tl-key"><span><i class="kf"></i>The family</span><span><i class="kw"></i>The world around them</span><span><i class="ku"></i>Unproven</span></div></div></div>
+  <div class="gut tl-wrap"><div class="tl-rail" aria-hidden="true"><div class="tl-year" id="tl-year">1390</div><div class="tl-era" id="tl-era"></div></div><div class="tl" id="tl"><div class="tl-spine"><i id="tl-fill"></i></div></div></div>
+</section>
 
 <section class="view" id="v-who" hidden><div class="gut">
   <div class="head"><span class="mono">Extra · index</span><h1>Who's who</h1><p>Everyone in the family tree behind this site, from A to Z. Tap a name for dates and family. Where a person turns up on a page or in a story, the links take you there.</p></div>
@@ -1059,7 +1102,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
   var PPL = window.PEOPLE || {}, A = window.ATLAS;
   var VIEWS = [['faces', 'Faces'], ['name', 'The name'], ['farm', 'The farm'], ['stories', 'Short stories'], ['line', 'The line'], ['crossing', 'The crossing'], ['ledger', 'The ledger'], ['church', 'The church'], ['rock', 'The rock'], ['unsolved', 'Unsolved'], ['home', 'Wall']];
-  var EXTRA = [['who', 'Who\'s who', 'Everyone on the site, A to Z'], ['remember', 'Tell us what you remember', 'How to add a memory or a correction'], ['more-faces', 'More faces', 'The Fyllings, and Ron Berget\'s brothers and sisters'], ['nes', 'Nes in Ole\'s time', 'How big his world was'], ['art', 'Nes and Hallingdal in art', 'Paintings and drawings of the valley']];
+  var EXTRA = [['timeline', 'The timeline', '1390 to today, on one page'], ['who', 'Who\'s who', 'Everyone on the site, A to Z'], ['remember', 'Tell us what you remember', 'How to add a memory or a correction'], ['more-faces', 'More faces', 'The Fyllings, and Ron Berget\'s brothers and sisters'], ['nes', 'Nes in Ole\'s time', 'How big his world was'], ['art', 'Nes and Hallingdal in art', 'Paintings and drawings of the valley']];
   var INMENU = [['unsolved', 'Unsolved', 'Open questions'], ['home', 'The wall', 'Back to the start']];
   $('#xmenu').innerHTML = EXTRA.concat(INMENU).map(function (v) { return '<a href="#' + v[0] + '">' + v[1] + '<small>' + v[2] + '</small></a>'; }).join('');
   function xclose() { $('#xmenu').hidden = true; $('#xbtn').setAttribute('aria-expanded', 'false'); }
@@ -1081,6 +1124,102 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     window.addEventListener('hashchange', function () { set(false); });
     window.matchMedia('(min-width: 861px)').addEventListener('change', function (q) { if (q.matches) set(false); });
   })();
+
+  /* the timeline: k f = family, w = world; u = unproven; e = era heading */
+  var TL = [
+    { e: 1, y: 1349, era: 'Before the records', t: 'Before the records', d: '1349 to 1590', x: 'Kravik, a cluster of farms by a lake in Numedal. The names here come from the family tree file. Only one document, from 1546, has been found for any of them.', bg: 'gude-hallingdal-valley', bgp: '50% 40%' },
+    { k: 'w', y: 1349, d: '1349', t: 'The Black Death reaches Norway', x: 'Plague arrives on a ship in Bergen and spreads through the country. A large share of the people die, and many farms stand empty for generations.' },
+    { k: 'f', u: 1, y: 1390, d: 'About 1390', t: 'Hallvard Bjørnson Kravik', x: 'The oldest name in the family tree, born at Kravik in Nore. Through Live Andersdatter Jellum, the tree climbs back to him. No record has been found.', go: 'story-ladder', gol: 'The Kravik branch' },
+    { k: 'w', y: 1397, d: '1397', t: 'The Kalmar Union', x: 'Denmark, Norway and Sweden come under one ruler. Norway will be governed from Copenhagen for over four hundred years.' },
+    { k: 'f', u: 1, y: 1475, d: 'About 1470 to 1480', t: 'Halvor Helgesen Kravik', x: 'Halvor and his wife Turi Eivindsdatter farm at Kravik. Their son Steinar is born about 1505.', go: 'story-ladder', gol: 'The Kravik branch' },
+    { k: 'w', y: 1537, d: '1537', t: 'The Reformation', x: 'Denmark and Norway become Lutheran. The church that will baptise, marry and bury every generation of this family keeps its books from now on, though few survive from before 1600.' },
+    { k: 'f', u: 1, y: 1546, d: '1546', t: 'The oldest paper on the branch', x: 'An estate division after Halvor Helgesen and Turi Eivindsdatter. It is the earliest document anyone cites for the family. Around the same time someone at Kravik carves a lyre that survives to this day.', img: 'kravik-lyre', go: 'story-ladder', gol: 'The Kravik branch' },
+    { k: 'w', y: 1588, d: '1588', t: 'Christian IV becomes king', x: 'He is eleven years old. He will rule Denmark and Norway for sixty years.' },
+
+    { e: 1, y: 1590, era: 'The valley', t: 'The valley', d: '1590 to 1880', x: 'Thirteen generations, father to son, in the parish of Nes in Hallingdal.', bg: 'valley' },
+    { k: 'f', y: 1590, d: 'About 1590', t: 'Levor Kvie is born', x: 'The first man on the main line, at Flå, then part of Nes parish. Everything before him comes through the women who married in.', go: 'line', gol: 'The line' },
+    { k: 'f', y: 1631, d: '1631', t: 'Live Andersdatter Jellum is born', x: 'Born in Eggedal. She will marry three times, the second time to Østen Levorsen Kvie, and outlive two husbands.', go: 'story-live', gol: 'Her three marriages' },
+    { k: 'f', y: 1672, d: '10 April 1672', t: 'Østen Levorsen Kvie\'s estate is settled', x: 'The probate record is the oldest document on the main line.', img: 'probate1672', go: 'line', gol: 'The line' },
+    { k: 'f', y: 1696, d: '1696', t: 'A baptism that survives', x: 'Østen Levorsen Kvie, the fourth generation, is baptised. His entry is still in the church book.', img: 'baptism1696', go: 'line', gol: 'The line' },
+    { k: 'f', y: 1697, d: '1697', t: 'Live dies', x: 'Her estate is divided among the children of all three marriages.', img: 'probate1697-a', go: 'story-live', gol: 'Her three marriages' },
+    { k: 'f', y: 1751, d: '1751', t: 'Amund Levorsen is born', x: 'The man who will bring the family to Berget. His father dies when he is eleven.', go: 'line', gol: 'The line' },
+    { k: 'f', y: 1788, d: '1788', t: 'A wedding in the Nes church book', x: 'Amund Levorsen marries Brynnild Halvorsdatter in the old stave church.', go: 'church', gol: 'The church' },
+    { k: 'f', y: 1801, d: '1801', t: 'The first census', x: 'Amun Levorsen, his wife Brynil and their sons are counted at the farm Berg. It is the first time the family and the farm appear on the same page.', img: 'census1801-berg', go: 'name', gol: 'The name' },
+    { k: 'w', y: 1806, d: '1806', t: 'A road that is dangerous to life', x: 'The county governor rides up the valley and reports that the path through Nes is hardly a road at all. In winter people travel on the frozen river.' },
+    { k: 'f', y: 1811, d: '1811', t: 'Amund Halvorsen is baptised', x: 'The grandson. He will hand the farm to his son and live out his life on it.', go: 'line', gol: 'The line' },
+    { k: 'w', y: 1813, d: '1813 to 1826', t: 'The King\'s Road', x: 'The first proper cart road is built through Hallingdal.' },
+    { k: 'w', y: 1814, d: '17 May 1814', t: 'Norway\'s constitution', x: 'Signed at Eidsvoll. By the end of the year Norway is in a union with Sweden instead of Denmark.' },
+    { k: 'w', y: 1825, d: '1825', t: 'The first emigrant ship', x: 'The sloop Restauration sails from Stavanger for New York. It is the start of the Norwegian emigration to America.' },
+    { k: 'f', y: 1839, d: '6 August 1839', t: 'Ole Amundsen Berget is born', x: 'Born at Berget. He is the one who will leave.', img: 'ole-birth-1839', go: 'faces', gol: 'Faces' },
+    { k: 'w', y: 1845, d: '1845', t: 'Hans Gude paints Nes', x: 'The young painter spends his summers in the village and paints the stave church and the valley.', img: 'gude-nes-church', go: 'church', gol: 'The church' },
+    { k: 'w', y: 1860, d: '1860', t: 'The great flood', x: 'The river takes the wooden bridges.' },
+    { k: 'f', y: 1862, d: '1862', t: 'A new church', x: 'The stave church is replaced by the large wooden church people call Hallingdomen. The old one is pulled down in 1864.', img: 'nes-new-church', go: 'church', gol: 'The church' },
+    { k: 'w', y: 1862, d: '1862', t: 'The Homestead Act', x: 'In America, 160 acres of land for anyone who will live on it and farm it for five years.' },
+    { k: 'f', y: 1865, d: '1865', t: 'Ole owns Berget', x: 'The census finds him running the farm at 26, with Birgit, the children, and his father living on as a pensioner.', go: 'farm', gol: 'The farm' },
+    { k: 'f', y: 1872, d: '8 April 1872', t: 'Christen Olsen Berget is born', x: 'The second son. In America he will be Christ O\'Neil Berget.', img: 'christ', go: 'story-oneil', gol: 'Where O\'Neil comes from' },
+
+    { e: 1, y: 1880, era: 'The crossing', t: 'The crossing', d: '1880 to 1881', x: 'Kristiania, Hull, Liverpool, Quebec, Wisconsin.', bg: 'angelo' },
+    { k: 'f', y: 1880, d: '26 August 1880', t: 'Three names in a police ledger', x: 'Ole, 41, with Gunhild and Christen, signs his emigration contract at the police station in Kristiania.', img: 'ledger-1880-entry', go: 'ledger', gol: 'The ledger' },
+    { k: 'f', y: 1880, d: '27 August 1880', t: 'The Angelo sails', x: 'From Kristiania to Hull, then by train to Liverpool and on across the Atlantic to Quebec.', img: 'angelo', go: 'crossing', gol: 'The crossing' },
+    { k: 'f', y: 1881, d: 'May 1881', t: 'Amund and Betsy follow', x: 'The rest of the family comes over the next spring.', go: 'crossing', gol: 'The crossing' },
+
+    { e: 1, y: 1882, era: 'The prairie', t: 'The prairie', d: '1882 to 1945', x: 'Wisconsin, then a broom wagon, then a homestead north of Turtle Lake, North Dakota.', bg: 'threshing' },
+    { k: 'w', y: 1889, d: '2 November 1889', t: 'North Dakota becomes a state' },
+    { k: 'f', y: 1899, d: '1899', t: 'The broom wagon', x: 'Christ leaves Brodhead, Wisconsin, with a team and a wagon full of brooms. It takes him three years to reach Turtle Lake.', img: 'christ', go: 'story-broom-wagon', gol: 'The broom wagon' },
+    { k: 'f', y: 1902, d: '1902', t: 'A homestead north of Turtle Lake', x: 'After a winter in Canby, Minnesota, a coal mine at Wilton and the railroad at Washburn, he files on his own land.', go: 'story-broom-wagon', gol: 'The broom wagon' },
+    { k: 'w', y: 1905, d: '1905', t: 'Norway is independent', x: 'The union with Sweden ends. The same year, Flå splits off from Nes.' },
+    { k: 'f', y: 1905, d: '1 February 1905', t: 'Birgit dies in Wisconsin', go: 'faces', gol: 'Faces' },
+    { k: 'f', y: 1906, d: '19 July 1906', t: 'Christ marries Mary Vigdahl', x: 'Her family had homesteaded two miles north of his claim. Their farm becomes the Berget home.', img: 'mary-vigdahl-1955', go: 'story-broom-wagon', gol: 'The broom wagon' },
+    { k: 'w', y: 1907, d: '1907', t: 'The railway reaches Nesbyen', x: 'The Bergen Line opens through the valley the family left.' },
+    { k: 'f', y: 1908, d: '10 February 1908', t: 'Ronald O\'Neil Berget is born', img: 'ronald', go: 'faces', gol: 'Faces' },
+    { k: 'f', y: 1912, d: 'About 1910 to 1915', t: 'The tornado', x: 'Ronald, a young boy, is in the house when a tornado lifts it off its foundation.', go: 'story-tornado', gol: 'The tornado' },
+    { k: 'f', y: 1916, d: '1916', t: 'Ole dies in Orfordville, Wisconsin', x: 'Thirty-six years after the police ledger.', img: 'ole', go: 'faces', gol: 'Faces' },
+    { k: 'f', y: 1922, l: 1, d: 'About 1922', t: 'Ronald is confirmed', img: 'ronald-confirmation', go: 'faces', gol: 'Faces' },
+    { k: 'w', y: 1932, d: '1930s', t: 'Drought and depression', x: 'Dust, grasshoppers and low prices hit the Dakota farms hard.' },
+    { k: 'f', y: 1934, d: '1934', t: 'Mary dies at Turtle Lake' },
+    { k: 'w', y: 1940, d: '9 April 1940', t: 'Germany invades Norway' },
+    { k: 'f', y: 1945, d: '9 November 1945', t: 'Christ dies at Turtle Lake', x: 'Born in Nes, eight years old on the boat, the high kicker of the family stories.', img: 'christ-mary-1955', go: 'story-high-kicker', gol: 'The high kicker' },
+
+    { e: 1, y: 1946, era: 'Living memory', t: 'Living memory', d: '1946 to today', x: 'Ronald and Clarissa\'s farm, their children, and the people who still remember.', bg: 'family-1950s' },
+    { k: 'f', y: 1952, d: 'Early 1950s', t: 'A year in California', x: 'The family moves west for a year or two. Larry plays baseball, possibly in Sacramento.', img: 'larry', go: 'more-faces', gol: 'More faces' },
+    { k: 'f', y: 1955, d: '1955', t: 'Turtle Lake turns fifty', x: 'The town\'s anniversary book prints Christ and Mary\'s story.', go: 'story-broom-wagon', gol: 'The broom wagon' },
+    { k: 'f', y: 1966, d: 'March 1966', t: 'The blizzard', x: 'Snow banks go right over the top of the outbuildings. Ron Berget, eleven or twelve, remembers it.', img: 'blizzard-1966-koch', go: 'story-blizzard-1966', gol: 'The blizzard' },
+    { k: 'f', y: 1997, d: '15 February 1997', t: 'Ronald dies at Turtle Lake', img: 'ronald-clarissa-later', go: 'faces', gol: 'Faces' },
+    { k: 'f', y: 2026, d: '2026', t: 'The museum', x: 'Ron Berget\'s family tree, the family\'s memories and the records, put together in one place. If you remember something, it goes here next.', go: 'remember', gol: 'Tell us what you remember' }
+  ];
+  var tlBuilt = false;
+  function buildTimeline() {
+    if (tlBuilt) return; tlBuilt = true;
+    var h = '', prev = null;
+    TL.forEach(function (e, i) {
+      if (e.e) { h += '<div class="tl-era-h" data-y="' + e.y + '" data-era="' + esc(e.era) + '"><div class="bg" style="background-image:url(img/' + e.bg + '.jpg);background-position:' + (e.bgp || 'center') + '"></div><div><span class="mono">' + esc(e.d) + '</span><h2>' + esc(e.t) + '</h2><p>' + esc(e.x) + '</p></div></div>'; prev = e.y; return; }
+      if (prev !== null && e.y - prev >= 40) h += '<div class="tl-gap">' + (e.y - prev) + ' years</div>';
+      prev = e.y;
+      var c = 'tl-ev ' + e.k + (e.u ? ' u' : '');
+      var body = '<div><h3>' + esc(e.t) + (e.u ? '<span class="tag guess">Unproven</span>' : e.l ? '<span class="tag guess">Likely</span>' : '') + '</h3>' + (e.x ? '<p>' + esc(e.x) + '</p>' : '') + (e.go ? '<a class="go" href="#' + e.go + '">' + esc(e.gol) + ' →</a>' : '') + '</div>';
+      var ph = e.img ? '<img class="ph" src="img/' + e.img + '.jpg" alt="" loading="lazy" data-lbsrc="img/' + e.img + '.jpg" data-lbcap="' + esc(e.t + ', ' + e.d) + '">' : '';
+      h += '<div class="' + c + '" data-y="' + e.y + '"><div class="tl-d">' + esc(e.d) + '</div><div class="tl-c">' + body + ph + '</div></div>';
+    });
+    $('#tl').insertAdjacentHTML('beforeend', h);
+    var yEl = $('#tl-year'), eraEl = $('#tl-era'), shown = 1390, raf = 0;
+    function setYear(y) { cancelAnimationFrame(raf); var from = shown, t0 = 0;
+      function f(t) { if (!t0) t0 = t; var u = Math.min(1, (t - t0) / 450); u = 1 - Math.pow(1 - u, 3); shown = Math.round(from + (y - from) * u); yEl.textContent = shown; if (u < 1) raf = requestAnimationFrame(f); }
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { shown = y; yEl.textContent = y; } else raf = requestAnimationFrame(f); }
+    var items = $('#tl').querySelectorAll('.tl-ev, .tl-era-h');
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (es) { es.forEach(function (x) { if (x.isIntersecting) x.target.classList.add('in'); }); }, { rootMargin: '0px 0px -12% 0px' });
+      items.forEach(function (n) { io.observe(n); });
+      var yo = new IntersectionObserver(function (es) { es.forEach(function (x) { if (!x.isIntersecting) return; var n = x.target; setYear(+n.dataset.y);
+        var eh = n.classList.contains('tl-era-h') ? n : null, p = n; while (!eh && p) { p = p.previousElementSibling; if (p && p.classList && p.classList.contains('tl-era-h')) eh = p; }
+        eraEl.textContent = eh ? eh.dataset.era : ''; }); }, { rootMargin: '-40% 0px -55% 0px' });
+      items.forEach(function (n) { yo.observe(n); });
+    } else items.forEach(function (n) { n.classList.add('in'); });
+    var fill = $('#tl-fill'), box = $('#tl'), eras = $('#tl').querySelectorAll('.tl-era-h .bg');
+    function onScroll() { if ($('#v-timeline').hidden) return; var r = box.getBoundingClientRect(), vh = innerHeight, pr = Math.max(0, Math.min(1, (vh * .5 - r.top) / r.height)); fill.style.height = (pr * 100) + '%';
+      eras.forEach(function (b) { var q = b.parentNode.getBoundingClientRect(); if (q.bottom < 0 || q.top > vh) return; b.style.transform = 'translateY(' + ((q.top + q.height / 2 - vh / 2) * -0.08) + 'px)'; }); }
+    addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  }
+
   var wwBuilt = false;
   function buildWho() {
     if (wwBuilt || !window.PEOPLE) return; wwBuilt = true;
@@ -1110,7 +1249,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     var toShip = name === 'ship'; if (toShip) name = 'crossing';
     if (name.indexOf('story-') === 0) { sid = name.slice(6); name = 'stories'; } var sub = EXTRA.some(function (v) { return v[0] === name; });
     if (!sub && !VIEWS.some(function (v) { return v[0] === name; })) name = 'home';
-    if (name === 'stories' && typeof story === 'function') story(sid); if (name === 'who') buildWho();
+    if (name === 'stories' && typeof story === 'function') story(sid); if (name === 'who') buildWho(); if (name === 'timeline') buildTimeline();
     VIEWS.forEach(function (v) { $('#v-' + v[0]).hidden = v[0] !== name; }); EXTRA.forEach(function (v) { $('#v-' + v[0]).hidden = v[0] !== name; }); $('#xbtn').classList.toggle('on', sub || name === 'unsolved'); document.querySelectorAll('#xmenu a').forEach(function (a) { if (a.getAttribute('href') === '#' + name) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); }); xclose();
     document.querySelectorAll('#nav a, #mnav a').forEach(function (a) { if (a.getAttribute('href') === '#' + name) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
     window.scrollTo(0, 0); if (toShip && $('#ship-part')) $('#ship-part').scrollIntoView();
