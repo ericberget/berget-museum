@@ -355,6 +355,16 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .bw .pt .n { font-size: 14px; font-weight: 600; fill: var(--ink); } .bw .pt .y { font-family: var(--mono); font-size: 11px; fill: var(--flare); letter-spacing: .06em; } .bw .pt .d { font-size: 11.5px; fill: var(--muted); }
 .bw .ld { stroke: rgba(237,243,245,.3); stroke-width: .8; }
 .bw .wg { fill: var(--flare); }
+.lt .tr { fill: none; stroke: var(--ink); stroke-linecap: round; }
+.lt .br { fill: none; stroke: var(--flare); stroke-width: 3; stroke-linecap: round; }
+.lt .tw { fill: none; stroke: rgba(255,122,79,.45); stroke-width: 1.3; stroke-linecap: round; } .lt .lf { fill: rgba(255,122,79,.5); }
+.lt .nd { fill: var(--bg); stroke: var(--ink); stroke-width: 2; } .lt .nd.o { stroke: var(--flare); }
+.lt .g { opacity: 0; transition: opacity .6s; } .lt .g.on { opacity: 1; }
+.lt .nm { font-size: 14px; font-weight: 600; fill: var(--ink); } .lt .bn .nm { fill: #ffd2bf; }
+.lt .yr { font-family: var(--mono); font-size: 10.5px; fill: var(--muted); letter-spacing: .04em; } .lt .bn .yr { fill: var(--flare); }
+.lt .ot { font-size: 11px; fill: var(--muted); }
+.lt .ax { font-family: var(--mono); font-size: 10px; fill: rgba(237,243,245,.25); letter-spacing: .1em; } .lt .axl { stroke: rgba(237,243,245,.06); }
+.lt .tag2 { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
 .bw-bar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 10px; }
 .bw-bar button { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); background: none; border: 1px solid var(--rule); border-radius: 99px; padding: 6px 12px; cursor: pointer; }
 .bw-bar button:hover { color: var(--flare); border-color: var(--flare); }
@@ -1382,9 +1392,18 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
              ['https://noaa.gov/heritage/stories/friday-find-snowy-photos-of-blizzards-from-years-past', 'Bill Koch on the drift, 9 March 1966', 'NOAA Heritage. The best-known photograph of the storm'],
              ['https://www.history.nd.gov/textbook/unit7_prettygood/unit7_5_66blizzard3.html', '1966 blizzard photographs', 'State Historical Society of North Dakota'],
              ['https://www.accuweather.com/en/winter-weather/1966-blizzard-provided-north-dakotas-most-famous-photo/1868770', 'How the famous photograph was taken', 'AccuWeather, 2026']] },
-    { id: 'ladder', n: '1390', k: 'Before 1590', h: 'Behind the ladder', p: 'live-andersdatter-jellum-1631',
+    { id: 'ladder', n: '1390', k: 'Before 1590', h: 'The Kravik branch', p: 'live-andersdatter-jellum-1631,osten-levorsen-kvie-1625',
       l: 'Through Live, the tree runs back eight more generations to a farm called Kravik, about 1390.',
-      b: ['Treat it as unproven. No record is attached to any of it, and several people are entered twice.'], more: [] }
+      b: ['The main line on this site goes from father to son back to Levor Kvie, born about 1590. But one of the wives on that line opens a second way back.',
+          '<b>Live Andersdatter Jellum</b> was born in Eggedal in 1631 and married Østen Levorsen Kvie, the second man on the main line. Through her mother, the family tree file climbs eight more generations, through the Skala farm to <b>Kravik</b>, a farm in Nore in Numedal, the next valley south-west of Hallingdal.',
+          { map: 'ladder' },
+          { h: 'Treat it as unproven' },
+          'No record is attached to anyone on the branch. These are names and years in the tree file, nothing more. Norwegian church books mostly begin in the 1600s, so anything earlier rests on scattered tax lists and court records, and family trees online often copy each other for this period.',
+          'Several people are entered in the tree twice, including Ragnhild Toresdatter Kravik and Steinar Hallvardsen Skala.',
+          'One name does not fit. Halvor, born about 1460, is listed as <b>Halvor Steinarson</b>, which means son of Steinar, but the tree gives his father as Helge. Either the name or the link is wrong.',
+          { h: 'What would settle it' },
+          'The farm histories for Nore and Rollag (the bygdebøker), which trace each farm\'s owners, and the tax lists of the 1500s. If the Kravik owners there match these names, the branch gets a lot stronger.'],
+      more: [] }
   ];
   var pplLinks = function (ids) { return (ids || '').split(',').filter(function (id) { return PPL[id]; }).map(function (id) { return '<button type="button" class="pn" data-p="' + id + '">' + esc(PPL[id].n) + '</button>'; }).join(''); };
   $('#cards').innerHTML = STORIES.map(function (st) {
@@ -1419,6 +1438,50 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     show(0); var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); play(); } }, { threshold: .45 }); io.observe(el);
   }
 
+  function ladderTree(el) {
+    var TX = 300, GAP = 52, BG = 78, Y0 = 628;
+    var T = [[1590, 'Levor Kvie', 'born 1590'], [1625, 'Østen Levorsen Kvie', '1625 to 1672'], [1665, 'Levor Østensen Kvie', '1665 to 1739'], [1696, 'Østen Levorsen Kvie', '1696 to 1768'], [1726, 'Levor Østensen', '1726 to 1762'], [1751, 'Amund Levorsen Berg', '1751 to 1806'], [1788, 'Halvor Amundsen Berg', 'born about 1788'], [1811, 'Amund Halvorsen Berget', 'born 1811'], [1839, 'Ole Amundsen Berget', '1839 to 1916'], [1872, 'Christ O\'Neil Berget', '1872 to 1945'], [1908, 'Ronald O\'Neil Berget', '1908 to 1997'], [1942, 'Ron Berget', ''], [1972, 'Neil, Eric and David', '']];
+    /* the branch: year, name, place, side for the label (1 right, -1 left), other ancestors at this step */
+    var B = [[1631, 'Live Andersdatter Jellum', '1631 · Eggedal', 1, ['Father: Anders Knutsen Jellum, 1601', 'His parents: Knut Kittilsen Jellum and Kjersti Engebretsdatter Grasvik']],
+      [1606, 'Ingebjørg Steinarsdatter Skala', '1606 · Eggedal', 1, ['Mother: Turi Gardsdatter Albjørk, 1583', 'Her father: Gard Torbjørnsen Albjørk, 1524']],
+      [1579, 'Steinar Steinarsen Skala', '1579 · Skala', -1, ['Father: Steinar Hallvardsen Skala, 1546']],
+      [1560, 'Ragnhild Toresdatter Kravik', '1560 · Nore', 1, ['Mother: Bergit Tjostolvsdatter Fossan, 1545', 'Her parents: Tjostolv Gunnulvsson Tråen and Ingeliev Narvesdatter']],
+      [1535, 'Tore Stenersen Kravik', 'about 1535 · Nore', -1, ['Mother: Ragnild Toresdatter Frøvoll, 1515']],
+      [1506, 'Steinar Kravik', '1506 · Kravik', 1, []],
+      [1460, 'Halvor Steinarson Kravik', '1460 · Kravik, Nore', -1, ['Mother: listed only as Gjellerud, 1425']],
+      [1420, 'Helge Hallvorsen Kravik', '1420 · Nore, Numedal', 1, ['Mother: Ingeborg Helgesdatter, 1385']],
+      [1390, 'Hallvard Bjørnson Kravik', '1390 · Nore', -1, ['The oldest name in the tree']]];
+    var TY = function (i) { return Y0 + i * GAP; }, BY = function (j) { return Y0 + GAP - j * BG; }, BXi = function (j) { return 372 + j * 50; }, W = 1000, H = TY(12) + 70;
+    var h = '<svg viewBox="0 0 ' + W + ' ' + H + '" class="lt" role="img" aria-label="A family tree drawn as a trunk and a branch. The trunk is the main line, from Neil, Eric and David back to Levor Kvie, born 1590. A branch leaves at Live Andersdatter Jellum, born 1631, and climbs through Skala and Kravik to Hallvard Bjørnson Kravik, born about 1390.">';
+    /* trunk, thicker at the base */
+    var top = TY(0), bot = TY(12) + 30;
+    h += '<path class="tr" id="lt-tr" d="M' + TX + ',' + bot + 'L' + TX + ',' + top + '" style="stroke-width:5"/>';
+    /* branch path through the branch nodes */
+    var d = 'M' + TX + ',' + (TY(1) + 26) + ' Q' + (TX + 40) + ',' + (BY(0) + 4) + ' ' + BXi(0) + ',' + BY(0);
+    for (var i = 1; i < B.length; i++) { var wob = (i % 2 ? 16 : -16); d += ' Q' + ((BXi(i - 1) + BXi(i)) / 2 + wob) + ',' + ((BY(i - 1) + BY(i)) / 2) + ' ' + BXi(i) + ',' + BY(i); }
+    h += '<path class="br" id="lt-br" d="' + d + '"/>';
+    T.forEach(function (g, i) { var y = TY(i); h += '<g class="g tn" data-y="' + y + '"><circle class="nd" cx="' + TX + '" cy="' + y + '" r="5"/><text class="nm" x="' + (TX - 14) + '" y="' + (y + 4) + '" text-anchor="end">' + esc(g[1]) + '</text>' + (g[2] ? '<text class="yr" x="' + (TX - 14) + '" y="' + (y + 18) + '" text-anchor="end">' + g[2] + '</text>' : '') + '</g>'; });
+    B.forEach(function (g, i) { var x = BXi(i), y = BY(i), sd = 1, lx = x + sd * 14, an = sd > 0 ? 'start' : 'end', tw = '';
+      g[4].forEach(function (o, k) { if (/^The oldest/.test(o)) return; var dx = -sd * (22 + k * 10), dy = -10 - k * 8; tw += '<path class="tw" d="M' + x + ',' + y + ' q' + (dx * .5) + ',' + (dy * .2) + ' ' + dx + ',' + dy + '"/><circle class="lf" cx="' + (x + dx) + '" cy="' + (y + dy) + '" r="2.6"/>'; });
+      h += '<g class="g bn" data-i="' + i + '">' + tw + '<circle class="nd o" cx="' + x + '" cy="' + y + '" r="5.5"/><text class="nm" x="' + lx + '" y="' + (y + 4) + '" text-anchor="' + an + '">' + esc(g[1]) + '</text><text class="yr" x="' + lx + '" y="' + (y + 18) + '" text-anchor="' + an + '">' + g[2] + '</text>' +
+        g[4].map(function (o, k) { return '<text class="ot" x="' + lx + '" y="' + (y + 33 + k * 14) + '" text-anchor="' + an + '">' + esc(o) + '</text>'; }).join('') + '</g>'; });
+    h += '<g class="g" id="lt-tag"><text class="tag2" x="' + (BXi(0) + 14) + '" y="' + (BY(0) + 64) + '" fill="var(--flare)">The Kravik branch · unproven</text><text class="tag2" x="' + (TX - 14) + '" y="' + (bot + 18) + '" text-anchor="end" fill="var(--muted)">The main line</text></g>';
+    h += '</svg><div class="bw-bar"><span class="mono" style="color:var(--muted);font-size:11px">White: the main line, father to son. Orange: Live\'s branch, from the tree file, with no records attached. Small twigs: the other parents it names.</span><button type="button" id="ltgo">Play again</button></div>';
+    el.innerHTML = h;
+    var tr = el.querySelector('#lt-tr'), br = el.querySelector('#lt-br'), LT = tr.getTotalLength(), LB2 = br.getTotalLength(), tn = el.querySelectorAll('.tn'), bn = el.querySelectorAll('.bn'), tag = el.querySelector('#lt-tag'), raf = 0;
+    function frame(u, v) { /* u: trunk 0..1, v: branch 0..1 */
+      tr.style.strokeDasharray = (LT * u) + ' ' + LT; br.style.strokeDasharray = (LB2 * v) + ' ' + LB2;
+      var yNow = bot - (bot - top) * u; tn.forEach(function (g) { g.classList.toggle('on', +g.dataset.y >= yNow - 2); });
+      var bl = br.getPointAtLength(LB2 * v).y; bn.forEach(function (g, i) { g.classList.toggle('on', v > 0 && BY(i) >= bl - 2); }); tag.classList.toggle('on', v > .05); }
+    function play() { cancelAnimationFrame(raf); var t0 = 0, A = 3600, P = 500, C = 5200;
+      function f(now) { if (!t0) t0 = now; var t = now - t0, ez = function (x) { x = Math.max(0, Math.min(1, x)); return x < .5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2; };
+        frame(ez(t / A), ez((t - A - P) / C)); if (t < A + P + C) raf = requestAnimationFrame(f); }
+      raf = requestAnimationFrame(f); }
+    el.querySelector('#ltgo').addEventListener('click', play);
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) { frame(1, 1); return; }
+    frame(0, 0); var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); play(); } }, { threshold: .2 }); io.observe(el);
+  }
+
   function story(id) {
     var i = -1; STORIES.forEach(function (st, j) { if (st.id === id) i = j; });
     $('#st-list').hidden = i >= 0; $('#st-art').hidden = i < 0;
@@ -1428,11 +1491,11 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     var st = STORIES[i], prev = STORIES[i - 1], next = STORIES[i + 1];
     $('#st-art').innerHTML = '<a class="st-back mono" href="#stories">← All short stories</a><span class="mono" style="display:block">' + esc(st.k) + '</span><h1>' + esc(st.h) + '</h1><p class="lead">' + esc(st.l) + '</p>' +
       (st.img ? '<figure><img src="img/' + st.img + '.jpg" alt="" data-lb="' + esc(st.cap || st.h) + '">' + (st.cap ? '<figcaption class="mono">' + esc(st.cap) + '</figcaption>' : '') + '</figure>' : '') +
-      '<div class="body">' + st.b.map(function (t) { if (typeof t === 'string') return '<p>' + t + '</p>'; if (t.h) return '<h2>' + esc(t.h) + '</h2>'; if (t.map) return '<div class="bw" id="bw"></div>'; return '<figure><img src="img/' + t.fig + '.jpg" alt="" data-lb="' + esc(t.cap) + '"><figcaption class="mono">' + esc(t.cap) + '</figcaption></figure>'; }).join('') + '</div>' +
+      '<div class="body">' + st.b.map(function (t) { if (typeof t === 'string') return '<p>' + t + '</p>'; if (t.h) return '<h2>' + esc(t.h) + '</h2>'; if (t.map) return '<div class="bw" id="map-' + t.map + '"></div>'; return '<figure><img src="img/' + t.fig + '.jpg" alt="" data-lb="' + esc(t.cap) + '"><figcaption class="mono">' + esc(t.cap) + '</figcaption></figure>'; }).join('') + '</div>' +
       (st.p ? '<p class="ppl"><span class="mono">People</span>' + pplLinks(st.p) + '</p>' : '') +
       (st.more.length ? '<div class="st-more"><span class="mono">Look further</span><ul>' + st.more.map(function (m) { return '<li><a href="' + m[0] + '" target="_blank" rel="noopener"><b>' + esc(m[1]) + '</b><span>' + esc(m[2]) + '</span></a></li>'; }).join('') + '</ul></div>' : '') +
       (st.bg ? '<p class="mono st-credit">Background: ' + esc(st.bg[2]) + '</p>' : '') + '<div class="st-next">' + (prev ? '<a href="#story-' + prev.id + '"><span class="mono">← Previous</span><b>' + esc(prev.h) + '</b></a>' : '') + (next ? '<a href="#story-' + next.id + '"><span class="mono">Next →</span><b>' + esc(next.h) + '</b></a>' : '') + '</div>';
-    zm(); if ($('#bw')) broomMap($('#bw'));
+    zm(); if ($('#map-broom')) broomMap($('#map-broom')); if ($('#map-ladder')) ladderTree($('#map-ladder'));
   }
 
   /* 8 unsolved */
