@@ -345,6 +345,18 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .art figcaption p { font-size: 14px; color: var(--muted); max-width: 44ch; }
 .art figcaption small { font-size: 12px; color: var(--muted); opacity: .8; }
 .art figcaption a { color: var(--gold); text-decoration: none; } .art figcaption a:hover { color: var(--flare); }
+.ww-bar { display: flex; gap: 14px; align-items: center; margin: 4px 0 8px; flex-wrap: wrap; }
+.ww-bar input { flex: 1; min-width: 220px; font: inherit; font-size: 16px; color: var(--ink); background: rgba(237,243,245,.04); border: 1px solid var(--rule); border-radius: 99px; padding: 11px 18px; }
+.ww-bar input:focus { outline: none; border-color: var(--flare); } .ww-bar .mono { font-size: 11px; color: var(--muted); }
+.ww { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 36px; margin-top: 8px; }
+@media (max-width: 760px) { .ww { grid-template-columns: minmax(0, 1fr); } }
+.ww-l { font-family: var(--mono); font-size: 13px; color: var(--flare); padding: 22px 0 6px; grid-column: 1 / -1; border-bottom: 1px solid var(--rule); }
+.ww-r { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 12px; align-items: start; padding: 12px 0; border-bottom: 1px solid rgba(237,243,245,.06); }
+.ww-r .ph { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; filter: grayscale(.2); }
+.ww-r.np { grid-template-columns: minmax(0, 1fr); }
+.ww-r .pn { font-size: 16px; font-weight: 600; }
+.ww-r .yrs { display: block; font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 3px; }
+.ww-r .on { display: block; font-size: 12.5px; color: var(--muted); margin-top: 5px; line-height: 1.5; } .ww-r .on a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); margin-right: 8px; } .ww-r .on a:hover { color: var(--flare); border-color: var(--flare); }
 .more-btn { display: grid; gap: 6px; margin-top: 64px; padding: 28px 32px; border: 1px solid rgba(237,243,245,.18); border-radius: var(--r); text-decoration: none; color: inherit; transition: border-color .2s, background .2s; }
 .more-btn b { font-size: clamp(26px,3.4vw,40px); font-weight: 700; } .more-btn small { color: var(--muted); font-size: 15px; }
 .more-btn:hover { border-color: var(--flare); background: rgba(237,243,245,.03); } .more-btn:hover b { color: var(--flare); }
@@ -663,6 +675,43 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     <figure><img src="img/eliason1898.jpg" data-lb="The Eliason family, 1898" alt="A large family group posed for a studio photograph in 1898." style="object-position:50% 40%"><figcaption>The Eliason family, 1898<small>Anna's family</small></figcaption></figure>
   </div>
   <a class="more-btn" href="#more-faces"><span class="mono">Keep going</span><b>More faces →</b><small>The Fyllings, Ron Berget's brothers and the rest of the family</small></a>
+</div></section>
+
+<section class="view" id="v-who" hidden><div class="gut">
+  <div class="head"><span class="mono">Extra · index</span><h1>Who's who</h1><p>Everyone in the family tree behind this site, from A to Z. Tap a name for dates and family. Where a person turns up on a page or in a story, the links take you there.</p></div>
+  <div class="ww-bar"><input type="search" id="ww-q" placeholder="Search a name, a farm or a place" aria-label="Search names"><span class="mono" id="ww-n"></span></div>
+  <h2 class="nm-h">Living family</h2>
+  <p class="nm-p">Ronald and Clarissa's children: Russ, Larry, Ron, Rosy and Mary Ann. Photographs of them are on <a href="#faces">Faces</a> and <a href="#more-faces">More faces</a>.</p>
+  <h2 class="nm-h">In the family tree</h2>
+  <div class="ww" id="ww"></div>
+</div></section>
+
+<section class="view" id="v-remember" hidden><div class="gut">
+  <div class="head"><span class="mono">Extra · for the family</span><h1>Tell us what you remember</h1><p>Most of what is on this site came from records. The best parts came from people. If you know a name, a nickname, a year or a story, please send it in, however small.</p></div>
+
+  <h2 class="nm-h">How to send something</h2>
+  <div class="nm-rows">
+    <div class="nm-row"><span class="yr">1</span><div class="wr">Email Eric<small>or reply to the email that brought you here</small></div><p>That is all it takes. No account, no form.</p></div>
+    <div class="nm-row"><span class="yr">2</span><div class="wr">Say which picture<small>use the words under it</small></div><p>For example "Holsteins in the snow" or "the three men on the front step". Every photo on the site has a caption you can copy.</p></div>
+    <div class="nm-row"><span class="yr">3</span><div class="wr">A sentence or two is plenty<small>names, nicknames, the year</small></div><p>Who is in it, where it was, what was going on, what happened to the dog. Send a few at a time, whenever something comes to mind.</p></div>
+    <div class="nm-row"><span class="yr">4</span><div class="wr">Rather talk than type?<small>call, or send a voice memo</small></div><p>Eric will write it up. A story with no photo is welcome too. It can become a short story on the site.</p></div>
+  </div>
+  <p class="nm-p">If you remember something differently from someone else, send it anyway. Where the family disagrees, the site shows both versions and says who remembered what.</p>
+
+  <h2 class="nm-h">Questions we would love answered</h2>
+  <div class="nm-rows">
+    <div class="nm-row"><span class="yr">?</span><div class="wr">The California year<small>early 1950s</small></div><p>Why the family went to California, where they lived, and why they came back. Was Larry's "S" baseball uniform from Sacramento?</p></div>
+    <div class="nm-row"><span class="yr">?</span><div class="wr">Crooked Lake<small>fishing as a boy</small></div><p>Who took you, what you caught, how you got there.</p></div>
+    <div class="nm-row"><span class="yr">?</span><div class="wr">The schoolhouse picture<small>on Faces</small></div><p>Who is who, which school it was, and roughly what year.</p></div>
+    <div class="nm-row"><span class="yr">?</span><div class="wr">The farm photos<small>on The farm</small></div><p>Anything at all: the animals' names, the machines, the buildings, who is standing where.</p></div>
+    <div class="nm-row"><span class="yr">?</span><div class="wr">Christ, Margith and Ronald<small>stories passed down</small></div><p>Anything you heard about the high kicker, the broom wagon, the tornado or life on the homestead near Turtle Lake.</p></div>
+  </div>
+
+  <h2 class="nm-h">Added by the family so far</h2>
+  <div class="nm-rows">
+    <div class="nm-row"><span class="yr">Ron</span><div class="wr">Ron Berget<small>the family tree, and memories</small></div><p>His family tree and his write-up "The Berget Family Tree", which the whole site is built on. The names in the family photographs. Crooked Lake, and the church he went to as a kid. Whitey, his best friend growing up; Canonball, the horse in the straw hat, named for the round spot on his rump; and the snow banks of the March 1966 blizzard, which went right over the outbuildings.</p></div>
+  </div>
+  <p class="nm-p">Your name goes here next.</p>
 </div></section>
 
 <section class="view" id="v-more-faces" hidden><div class="gut">
@@ -1010,7 +1059,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
   var PPL = window.PEOPLE || {}, A = window.ATLAS;
   var VIEWS = [['faces', 'Faces'], ['name', 'The name'], ['farm', 'The farm'], ['stories', 'Short stories'], ['line', 'The line'], ['crossing', 'The crossing'], ['ledger', 'The ledger'], ['church', 'The church'], ['rock', 'The rock'], ['unsolved', 'Unsolved'], ['home', 'Wall']];
-  var EXTRA = [['more-faces', 'More faces', 'The Fyllings, and Ron Berget\'s brothers and sisters'], ['nes', 'Nes in Ole\'s time', 'How big his world was'], ['art', 'Nes and Hallingdal in art', 'Paintings and drawings of the valley']];
+  var EXTRA = [['who', 'Who\'s who', 'Everyone on the site, A to Z'], ['remember', 'Tell us what you remember', 'How to add a memory or a correction'], ['more-faces', 'More faces', 'The Fyllings, and Ron Berget\'s brothers and sisters'], ['nes', 'Nes in Ole\'s time', 'How big his world was'], ['art', 'Nes and Hallingdal in art', 'Paintings and drawings of the valley']];
   var INMENU = [['unsolved', 'Unsolved', 'Open questions'], ['home', 'The wall', 'Back to the start']];
   $('#xmenu').innerHTML = EXTRA.concat(INMENU).map(function (v) { return '<a href="#' + v[0] + '">' + v[1] + '<small>' + v[2] + '</small></a>'; }).join('');
   function xclose() { $('#xmenu').hidden = true; $('#xbtn').setAttribute('aria-expanded', 'false'); }
@@ -1032,12 +1081,36 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     window.addEventListener('hashchange', function () { set(false); });
     window.matchMedia('(min-width: 861px)').addEventListener('change', function (q) { if (q.matches) set(false); });
   })();
+  var wwBuilt = false;
+  function buildWho() {
+    if (wwBuilt || !window.PEOPLE) return; wwBuilt = true;
+    var P = window.PEOPLE, on = {}, pages = VIEWS.concat(EXTRA);
+    pages.forEach(function (v) { var sec = $('#v-' + v[0]); if (!sec || v[0] === 'who') return; sec.querySelectorAll('[data-p]').forEach(function (b) { var id = b.dataset.p; on[id] = on[id] || []; if (!on[id].some(function (x) { return x[0] === '#' + v[0]; })) on[id].push(['#' + v[0], v[1]]); }); });
+    if (typeof STORIES !== 'undefined') STORIES.forEach(function (st) { (st.p || '').split(',').forEach(function (id) { id = id.trim(); if (!id) return; on[id] = on[id] || []; on[id].push(['#story-' + st.id, 'Story: ' + (st.h || st.k)]); }); });
+    var nice = function (n) { return n.replace(/[?]+/g, '').split(' ').map(function (w) { return w.length > 1 && w === w.toUpperCase() && /[A-ZÆØÅ]/.test(w) ? w.charAt(0) + w.slice(1).toLowerCase() : w; }).join(' ').trim(); };
+    var yr = function (a) { return a && a[0] ? (String(a[0]).match(/1[0-9]{3}/) || [''])[0] : ''; };
+    var seen = {}, ids = Object.keys(P).filter(function (id) { var p = P[id], k = nice(p.n).toLowerCase() + '|' + yr(p.b);
+      if (seen[k]) { var o = seen[k]; (on[id] || []).forEach(function (l) { on[o] = on[o] || []; if (!on[o].some(function (x) { return x[0] === l[0]; })) on[o].push(l); }); return false; }
+      seen[k] = id; return true; }).sort(function (a, b) { return nice(P[a].n).localeCompare(nice(P[b].n), 'nb'); }), last = '', h = '';
+    ids.forEach(function (id) { var p = P[id], nm = nice(p.n), L = nm.charAt(0).toUpperCase();
+      if (L !== last) { h += '<div class="ww-l">' + L + '</div>'; last = L; }
+      var yb = p.b && p.b[0] ? (String(p.b[0]).match(/1[0-9]{3}/) || [''])[0] : '', yd = p.d && p.d[0] ? (String(p.d[0]).match(/1[0-9]{3}/) || [''])[0] : '', pl = p.b && p.b[1] ? String(p.b[1]).split(',')[0] : '';
+      var yrs = (yb || yd) ? (yb || '?') + (yd ? ' to ' + yd : '') : ''; yrs = [yrs, pl].filter(Boolean).join(' · ');
+      var links = (on[id] || []).map(function (l) { return '<a href="' + l[0] + '">' + esc(l[1]) + '</a>'; }).join('');
+      h += '<div class="ww-r' + (p.i ? '' : ' np') + '" data-q="' + esc((nm + ' ' + yrs).toLowerCase()) + '">' + (p.i ? '<img class="ph" src="img/' + p.i + '.jpg" alt="" loading="lazy">' : '') +
+        '<div><button type="button" class="pn" data-p="' + id + '">' + esc(nm) + '</button>' + (yrs ? '<span class="yrs">' + esc(yrs) + '</span>' : '') + (links ? '<span class="on">' + links + '</span>' : '') + '</div></div>'; });
+    $('#ww').innerHTML = h; var n = $('#ww-n'); n.textContent = ids.length + ' people';
+    $('#ww-q').addEventListener('input', function () { var q = this.value.trim().toLowerCase(), c = 0;
+      $('#ww').querySelectorAll('.ww-r').forEach(function (r) { var m = !q || r.dataset.q.indexOf(q) >= 0; r.hidden = !m; if (m) c++; });
+      $('#ww').querySelectorAll('.ww-l').forEach(function (l) { var x = l.nextElementSibling, any = false; while (x && !x.classList.contains('ww-l')) { if (!x.hidden) any = true; x = x.nextElementSibling; } l.hidden = !any; });
+      n.textContent = q ? c + ' found' : ids.length + ' people'; });
+  }
   function show() {
     var name = location.hash.replace('#', ''), sid = '';
     var toShip = name === 'ship'; if (toShip) name = 'crossing';
     if (name.indexOf('story-') === 0) { sid = name.slice(6); name = 'stories'; } var sub = EXTRA.some(function (v) { return v[0] === name; });
     if (!sub && !VIEWS.some(function (v) { return v[0] === name; })) name = 'home';
-    if (name === 'stories' && typeof story === 'function') story(sid);
+    if (name === 'stories' && typeof story === 'function') story(sid); if (name === 'who') buildWho();
     VIEWS.forEach(function (v) { $('#v-' + v[0]).hidden = v[0] !== name; }); EXTRA.forEach(function (v) { $('#v-' + v[0]).hidden = v[0] !== name; }); $('#xbtn').classList.toggle('on', sub || name === 'unsolved'); document.querySelectorAll('#xmenu a').forEach(function (a) { if (a.getAttribute('href') === '#' + name) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); }); xclose();
     document.querySelectorAll('#nav a, #mnav a').forEach(function (a) { if (a.getAttribute('href') === '#' + name) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
     window.scrollTo(0, 0); if (toShip && $('#ship-part')) $('#ship-part').scrollIntoView();
