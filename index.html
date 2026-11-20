@@ -378,6 +378,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .tl-ev .ph { width: 150px; height: 150px; object-fit: cover; border-radius: 6px; background: #0e1113; cursor: zoom-in; filter: saturate(.9); }
 .tl-ev .tag { margin-left: 8px; }
 .tl-ev.w { margin-bottom: 22px; } .tl-ev.w .tl-c { margin-top: 4px; padding-left: 14px; border-left: 2px solid rgba(237,243,245,.12); }
+.tl-ev.w .tl-c:has(.ph) { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px; align-items: start; } .tl-ev.w .ph { width: 110px; height: 110px; }
 .tl-ev.w h3 { font-size: 16px; font-weight: 600; color: rgba(237,243,245,.82); margin-bottom: 4px; } .tl-ev.w p { font-size: 14px; }
 .tl-ev.w .tl-d::after { content: '  ·  in the world'; text-transform: uppercase; font-size: 10px; letter-spacing: .12em; opacity: .7; }
 .tl-gap { position: relative; margin: 6px 0 34px -44px; padding-left: 44px; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(237,243,245,.35); }
@@ -393,7 +394,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .tl-rail { position: sticky; top: 56px; z-index: 5; margin: 0 -20px 10px; padding: 8px 20px; background: rgba(21,25,28,.94); backdrop-filter: blur(6px); border-bottom: 1px solid var(--rule); display: flex; align-items: baseline; gap: 14px; }
   .tl-year { position: static; font-size: 34px; -webkit-text-stroke-width: 1px; } .tl-era { position: static; margin: 0; }
   .tl { padding-left: 34px; } .tl-spine { left: 6px; } .tl-ev::before { left: -34px; } .tl-era-h, .tl-gap { margin-left: -34px; } .tl-gap { padding-left: 34px; }
-  .tl-ev.f .tl-c { grid-template-columns: minmax(0, 1fr); } .tl-ev .ph { width: 100%; height: 190px; order: -1; }
+  .tl-ev.f .tl-c, .tl-ev.w .tl-c:has(.ph) { grid-template-columns: minmax(0, 1fr); } .tl-ev .ph, .tl-ev.w .ph { width: 100%; height: 190px; order: -1; object-position: 50% 30%; }
   .tl-era-h { min-height: 220px; padding: 24px; }
 }
 @media (prefers-reduced-motion: reduce) { .tl-ev, .tl-era-h { opacity: 1; transform: none; transition: none; } }
@@ -1145,7 +1146,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     { k: 'f', u: 1, y: 1475, d: 'About 1470 to 1480', t: 'Halvor Helgesen Kravik', x: 'Halvor and his wife Turi Eivindsdatter farm at Kravik. Their son Steinar is born about 1505.', go: 'story-ladder', gol: 'The Kravik branch' },
     { k: 'w', y: 1537, d: '1537', t: 'The Reformation', x: 'Denmark and Norway become Lutheran. The church that will baptize, marry and bury every generation of this family keeps its books from now on, though few survive from before 1600.' },
     { k: 'f', u: 1, y: 1546, d: '1546', t: 'The oldest paper on the branch', x: 'An estate division after Halvor Helgesen and Turi Eivindsdatter. It is the earliest document anyone cites for the family. Around the same time someone at Kravik carves a lyre that survives to this day. The photo shows that lyre.', img: 'kravik-lyre-square', go: 'story-ladder', gol: 'The Kravik branch' },
-    { k: 'w', y: 1588, d: '1588', t: 'Christian IV becomes king', x: 'He is eleven years old. He will rule Denmark and Norway for sixty years.' },
+    { k: 'w', y: 1588, d: '1588', t: 'Christian IV becomes king', x: 'He is ten years old. He will rule Denmark and Norway for sixty years. Portrait by Pieter Isaacsz, about 1612.', img: 'christian-iv' },
 
     { e: 1, y: 1590, era: 'The valley', t: 'The valley', d: '1590 to 1880', x: 'Thirteen generations, father to son, in the parish of Nes in Hallingdal.', bg: 'valley' },
     { k: 'f', y: 1590, d: 'About 1590', t: 'Levor Kvie is born', x: 'The first man on the main line, at Flå, then part of Nes parish. Everything before him comes through the women who married in.', go: 'line', gol: 'The line' },
