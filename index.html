@@ -48,6 +48,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .xmenu { position: absolute; right: 0; top: calc(100% + 8px); min-width: 230px; background: #15191c; border: 1px solid var(--rule); border-radius: var(--r); padding: 6px; box-shadow: 0 12px 30px rgba(0,0,0,.45); display: grid; }
 .xmenu a { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; color: var(--muted); padding: 10px 12px; border-radius: 6px; }
 .xmenu a:hover { color: var(--flare); background: rgba(237,243,245,.04); } .xmenu a[aria-current] { color: var(--ink); }
+.xmenu a.cta { margin-top: 6px; background: rgba(214,176,74,.14); border: 1px solid rgba(214,176,74,.45); color: var(--gold); } .xmenu a.cta:hover { background: rgba(214,176,74,.22); color: #f0d27a; } .xmenu a.cta small { color: var(--ink); opacity: .75; }
+.mnav a.cta { margin-top: 14px; border: 1px solid rgba(214,176,74,.45); border-radius: 8px; background: rgba(214,176,74,.12); padding: 13px 14px; color: var(--gold); } .mnav a.cta small { color: var(--ink); opacity: .75; }
 .xmenu small { display: block; text-transform: none; letter-spacing: 0; font-family: inherit; font-size: 11px; opacity: .7; margin-top: 3px; }
 .nav a { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; color: var(--muted); padding: 8px 10px; border-radius: 99px; white-space: nowrap; }
 .nav a { transition: color .2s, background .2s; } .nav a:hover { color: var(--flare); } .nav a[aria-current]:hover { color: var(--bg); } .nav a[aria-current] { color: var(--bg); background: var(--ink); }
@@ -741,7 +743,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
   <h2 class="nm-h">How to send something</h2>
   <div class="nm-rows">
-    <div class="nm-row"><span class="yr">1</span><div class="wr">Email Eric<small>or reply to the email that brought you here</small></div><p>You don't need an account or a form.</p></div>
+    <div class="nm-row"><span class="yr">1</span><div class="wr">Email Eric<small><a href="mailto:berget3333@gmail.com" style="color:var(--gold)">berget3333@gmail.com</a>, or reply to the email that brought you here</small></div><p>You don't need an account or a form.</p></div>
     <div class="nm-row"><span class="yr">2</span><div class="wr">Say which picture<small>use the words under it</small></div><p>For example "Holsteins in the snow" or "the three men on the front step". Every photo on the site has a caption you can copy.</p></div>
     <div class="nm-row"><span class="yr">3</span><div class="wr">A sentence or two is plenty<small>names, nicknames, the year</small></div><p>Who is in it, where it was, what was going on, what happened to the dog. Send a few at a time, whenever something comes to mind.</p></div>
     <div class="nm-row"><span class="yr">4</span><div class="wr">Rather talk than type?<small>call, or send a voice memo</small></div><p>Eric will write it up. A story with no photo is welcome too. It can become a short story on the site.</p></div>
@@ -1110,9 +1112,10 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
   var PPL = window.PEOPLE || {}, A = window.ATLAS;
   var VIEWS = [['faces', 'Faces'], ['name', 'The name'], ['farm', 'The farm'], ['stories', 'Short stories'], ['line', 'The line'], ['crossing', 'The crossing'], ['ledger', 'The ledger'], ['church', 'The church'], ['rock', 'The rock'], ['unsolved', 'Unsolved'], ['home', 'Wall']];
-  var EXTRA = [['timeline', 'The timeline', '1390 to today, on one page'], ['who', 'Who\'s who', 'Everyone on the site, A to Z'], ['remember', 'Tell us what you remember', 'How to add a memory or a correction'], ['more-faces', 'More faces', 'The Fyllings, and Ron Berget\'s brothers and sisters'], ['nes', 'Nes in Ole\'s time', 'How big his world was'], ['art', 'Nes and Hallingdal in art', 'Paintings and drawings of the valley']];
+  var EXTRA = [['timeline', 'The timeline', '1390 to today, on one page'], ['who', 'Who\'s who', 'Everyone on the site, A to Z'], ['more-faces', 'More faces', 'The Fyllings, and Ron Berget\'s brothers and sisters'], ['nes', 'Nes in Ole\'s time', 'How big his world was'], ['art', 'Nes and Hallingdal in art', 'Paintings and drawings of the valley'], ['remember', 'Tell us what you remember', 'Send a memory or a correction to berget3333@gmail.com']];
   var INMENU = [['unsolved', 'Unsolved', 'Open questions'], ['home', 'The wall', 'Back to the start']];
-  $('#xmenu').innerHTML = EXTRA.concat(INMENU).map(function (v) { return '<a href="#' + v[0] + '">' + v[1] + '<small>' + v[2] + '</small></a>'; }).join('');
+  var MENU = EXTRA.filter(function (v) { return v[0] !== 'remember'; }).concat(INMENU, EXTRA.filter(function (v) { return v[0] === 'remember'; }));
+  $('#xmenu').innerHTML = MENU.map(function (v) { return '<a href="#' + v[0] + '"' + (v[0] === 'remember' ? ' class="cta"' : '') + '>' + v[1] + '<small>' + v[2] + '</small></a>'; }).join('');
   function xclose() { $('#xmenu').hidden = true; $('#xbtn').setAttribute('aria-expanded', 'false'); }
   $('#xbtn').addEventListener('click', function (e) { e.stopPropagation(); var o = $('#xmenu').hidden; $('#xmenu').hidden = !o; this.setAttribute('aria-expanded', String(o)); });
   document.addEventListener('click', function (e) { if (!e.target.closest('#xtra')) xclose(); });
@@ -1123,7 +1126,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   (function () {
     var main = VIEWS.filter(function (v) { return !INMENU.some(function (m) { return m[0] === v[0]; }); });
     $('#mnav').innerHTML = main.map(function (v, i) { return '<a href="#' + v[0] + '"><span class="no">' + String(i + 1).padStart(2, '0') + '</span><span>' + v[1] + '</span></a>'; }).join('') +
-      '<div class="mh">More</div>' + EXTRA.concat(INMENU).map(function (v) { return '<a href="#' + v[0] + '"><span class="no"></span><span>' + v[1] + '<small>' + v[2] + '</small></span></a>'; }).join('');
+      '<div class="mh">More</div>' + MENU.map(function (v) { return '<a href="#' + v[0] + '"' + (v[0] === 'remember' ? ' class="cta"' : '') + '><span class="no"></span><span>' + v[1] + '<small>' + v[2] + '</small></span></a>'; }).join('');
     var b = $('#burger'), m = $('#mnav');
     function set(o) { m.hidden = !o; b.setAttribute('aria-expanded', String(o)); document.documentElement.style.overflow = o ? 'hidden' : ''; }
     b.addEventListener('click', function (e) { e.stopPropagation(); set(m.hidden); });
