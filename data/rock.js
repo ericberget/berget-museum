@@ -88,7 +88,7 @@
   }
 
   var PLACES = {
-    berget: { ll: [60.54615, 9.1973], n: 'Berget', s: '509 m', lift: 45 },
+    berget: { ll: [60.54615, 9.1973], n: 'Berget', s: '1,670 ft', lift: 45 },
     skriu: { ll: [60.54807, 9.19789], n: 'Skriu', s: 'the name means scree', lift: 30 },
     anker: { ll: [60.5477, 9.19599], n: 'Ankerbråten', lift: 30 },
     espe: { ll: [60.54513, 9.19689], n: 'Espelund', lift: 25 },
@@ -96,8 +96,8 @@
     nedre: { ll: [60.53847, 9.19045], n: 'Nedre Storeli', lift: 40 },
     stave: { ll: [60.5701, 9.0971], n: 'The stave church', s: 'stood about here until 1864', lift: 120 },
     kirke: { ll: [60.56692, 9.10354], n: 'Nes church', s: 'built 1862', lift: 70 },
-    s1: { ll: [60.5493, 9.1984], n: '1  The face above Skriu', s: '80 m high, up to 48°', lift: 70, hot: 1 },
-    s2: { ll: [60.54631, 9.20474], n: '2  The top', s: '677 m', lift: 40, hot: 1 },
+    s1: { ll: [60.5493, 9.1984], n: '1  The face above Skriu', s: '260 ft high, up to 48°', lift: 70, hot: 1 },
+    s2: { ll: [60.54631, 9.20474], n: '2  The top', s: '2,221 ft', lift: 40, hot: 1 },
     s3: { ll: [60.54066, 9.19078], n: '3  Hallandnatten', s: 'the only named height', lift: 60, hot: 1 },
     s4: { ll: [60.54585, 9.1969], n: '4  The yard itself', lift: 18, hot: 1 }
   };
@@ -106,20 +106,20 @@
     { h: 'The word', t: 'In 1839 the priest at Nes wrote the family’s name as Berget. It means the rock. It was the name of their farm. Nobody in the family knows which rock.',
       p: [60.528, 9.105, 2700], l: [60.556, 9.165, 250], show: ['stave', 'berget'], dur: 2600,
       pics: [['ole-birth-1839', 'The 1839 entry', 'The Nes church book, 1839. Entry 39: Ole, born 6 August, son of Amund Halvorsen Berget.']] },
-    { h: 'The church', t: 'The valley floor at Nes, 164 metres above the sea. The stave church stood about here. The family’s names were written in its book.',
+    { h: 'The church', t: 'The valley floor at Nes, 538 feet above the sea. The stave church stood about here. The family’s names were written in its book.',
       p: [60.5625, 9.111, 520], l: [60.5701, 9.0971, 170], show: ['stave', 'kirke'], dur: 4200,
-      pics: [['gude-nes-church', 'The church, painted in 1845', 'The stave church at Nes, watercolour by Hans Gude, June 1845. Hallingdal Museum.'], ['nesbyen1910', 'Nes in 1910', 'Nesbyen and the hills above it, 1910.']] },
-    { h: 'The climb', t: 'Today’s map has one farm called Berget in Nes. It is 3.8 miles (6 km) east of the church and 1,130 feet (345 m) higher.',
+      pics: [['gude-nes-church', 'The church, painted in 1845', 'The stave church at Nes, watercolor by Hans Gude, June 1845. Hallingdal Museum.'], ['nesbyen1910', 'Nes in 1910', 'Nesbyen and the hills above it, 1910.']] },
+    { h: 'The climb', t: 'Today’s map has one farm called Berget in Nes. It is 3.8 miles east of the church and 1,130 feet higher.',
       p: [60.5745, 9.094, 760], l: [60.552, 9.17, 330], show: ['stave', 'berget'], dur: 4200, path: 1 },
-    { h: 'The neighbours', t: 'Ole’s birth entry names his witnesses. Two are called Braaten and one is Guri Storelie. The farms beside this Berget are Ankerbråten and the two Storeli farms.',
+    { h: 'The neighbors', t: 'Ole’s birth entry names his witnesses. Two are called Braaten and one is Guri Storelie. The farms beside this Berget are Ankerbråten and the two Storeli farms.',
       p: [60.5452, 9.1835, 800], l: [60.5445, 9.1955, 470], show: ['berget', 'skriu', 'anker', 'espe', 'ovre', 'nedre'], dur: 4600,
       pics: [['ole-birth-1839', 'The witnesses\u2019 names', 'The Nes church book, 1839. The lower strip is the witnesses\u2019 column: Braaten, Dybedal, Berget and Storelie, as we read it.']] },
-    { h: 'The yard', t: 'The yard is at 509 metres. The ground falls away to the west. This is the view from it, down to the valley and across to the hills on the far side.',
+    { h: 'The yard', t: 'The yard is at 1,670 feet. The ground falls away to the west. This is the view from it, down to the valley and across to the hills on the far side.',
       p: [60.54615, 9.1976, null, 16], l: [60.556, 9.13, 420], show: [], dur: 4600 },
-    { h: 'Four suspects', t: 'Which rock? There are four candidates within a kilometre of the door. Turn the model and judge for yourself.',
+    { h: 'Four suspects', t: 'Which rock? There are four candidates within half a mile of the door. Turn the model and judge for yourself.',
       p: [60.5458, 9.1895, 700], l: [60.5474, 9.2005, 575], show: ['berget', 'skriu', 's1', 's2', 's3', 's4'], dur: 4200, rings: 1, free: 1 },
     { h: 'The walk to church', t: '3.8 miles in a straight line and 1,130 feet down. On foot that is well over an hour down and about two hours back up. Their real path is not known, and it was longer than this line. If this is the farm, Ole was born up here in August 1839 and his name was written down there.',
-      pics: [['gude-nes-church', 'The church, painted in 1845', 'The stave church at Nes, watercolour by Hans Gude, June 1845. Hallingdal Museum.'], ['ole-birth-1839', 'Ole\u2019s entry, 1839', 'The Nes church book, 1839. Entry 39: Ole, born 6 August, son of Amund Halvorsen Berget.']],
+      pics: [['gude-nes-church', 'The church, painted in 1845', 'The stave church at Nes, watercolor by Hans Gude, June 1845. Hallingdal Museum.'], ['ole-birth-1839', 'Ole\u2019s entry, 1839', 'The Nes church book, 1839. Entry 39: Ole, born 6 August, son of Amund Halvorsen Berget.']],
       walk: 1, show: ['stave', 'berget'], dur: 26000, path: 1 }
   ];
 
@@ -192,7 +192,7 @@
     var n = A.pts[0], c = A.pts[1], k = A.pts[2], uy = Math.abs(k[1] - n[1]) / 2.42, ux = Math.abs(c[0] - n[0]) / 1.65;
     if (!(ux > 0) || !(uy > 0)) return;
     var w = 11 * ux, h = 7.6 * uy, x0 = n[0] - 5.6 * ux, y0 = n[1] - 4.6 * uy;
-    box.innerHTML = '<svg viewBox="' + [x0, y0, w, h].join(' ') + '" aria-hidden="true"><path d="' + A.land + '"/><circle cx="' + n[0] + '" cy="' + n[1] + '" r="' + w * .05 + '"/></svg><b>Nes, southern Norway</b><small>120 km north-west of Oslo</small>';
+    box.innerHTML = '<svg viewBox="' + [x0, y0, w, h].join(' ') + '" aria-hidden="true"><path d="' + A.land + '"/><circle cx="' + n[0] + '" cy="' + n[1] + '" r="' + w * .05 + '"/></svg><b>Nes, southern Norway</b><small>75 miles north-west of Oslo</small>';
     box.hidden = false;
   }
   function go(i, first) {
