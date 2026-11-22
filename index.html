@@ -277,8 +277,10 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .faces figure img { border-radius: var(--r); width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; }
 .faces figcaption, .cap2 { font-size: 14px; margin-top: 8px; } .faces figcaption small, .cap2 small { display: block; color: var(--muted); }
 @media (max-width: 700px) { .faces { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.faces.f5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .faces.f4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-@media (max-width: 900px) { .faces.f4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 900px) { .faces.f5 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.faces.f4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 /* 6 farm */
 .table { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-flow: dense; gap: clamp(14px, 2.4vw, 30px); padding-top: 12px; }
@@ -672,10 +674,11 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
       <figure style="max-width:560px"><img src="img/christ.jpg" data-lb="Christ O'Neil Berget, about 1900" alt="An oval studio portrait of a young man in a tweed suit, high collar and checked tie." style="border-radius:var(--r)"><figcaption class="cap2"><button type="button" class="pn" data-p="christ-oneil-berget-1872">Christ O'Neil Berget</button><small>about 1900, aged about 28</small></figcaption></figure>
     </div>
   </div>
-  <div class="faces f4" style="margin-top:32px">
+  <div class="faces f5" style="margin-top:32px">
     <figure><img src="img/ole.jpg" data-lb="Ole Amundsen Berget, about 1890. A detail of the family portrait." alt="A close view of a seated man with gray hair and a full beard, in a dark suit."><figcaption><button type="button" class="pn" data-p="ole-amundsen-berget-1839">Ole Amundsen Berget</button><small>about 1890, aged about 51</small></figcaption></figure>
     <figure><img src="img/birgit.jpg" data-lb="Birgit Christensdatter, about 1890. A detail of the family portrait." alt="A close view of a seated woman with her hair parted in the middle, in a dark buttoned dress with a lace collar."><figcaption><button type="button" class="pn" data-p="birgit-christensdatter-1829">Birgit Christensdatter</button><small>about 1890, aged about 61</small></figcaption></figure>
     <figure><img src="img/ronald-confirmation.jpg" data-lb="Ronald O'Neil Berget's confirmation portrait, about 1922. The date is a guess from his age." alt="A studio portrait of a teenage boy with short fair hair, in a dark three-piece suit and a light patterned tie, in front of a painted backdrop of trees."><figcaption><button type="button" class="pn" data-p="ronald-oneil-berget-1908">Ronald O'Neil Berget</button><small>his confirmation, about 1922, aged about 14</small></figcaption></figure>
+    <figure><img src="img/ronald-maybe-teen.jpg" data-lb="Maybe Ronald, as a teenager, mid-1920s. From the family photo album; not labeled." alt="A studio portrait of a fair-haired teenage boy with a slight smile, in a dark suit, striped collar and wide tie, in front of a pleated curtain."><figcaption>Maybe Ronald<small>as a teenager, mid-1920s, not labeled</small></figcaption></figure>
     <figure><img src="img/ronald.jpg" data-lb="Ronald O'Neil Berget as a young man. Date not known." alt="A studio portrait of a smiling young man with wavy fair hair, in a dark overcoat with a fur collar and a polka-dot tie."><figcaption><button type="button" class="pn" data-p="ronald-oneil-berget-1908">Ronald O'Neil Berget</button><small>as a young man, date not known</small></figcaption></figure>
   </div>
   <div class="two" style="grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);margin-top:56px">
