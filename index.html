@@ -569,6 +569,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   #v-faces .two .mono, #v-more-faces .two .mono { display: none; }
   #v-faces .two figure figure, #v-faces .two > div figure { max-width: 60% !important; margin-top: 10px !important; }
 }
+.faces.sq2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .faces.sq2 figure img { aspect-ratio: 1 / 1; }
 </style>
 </head>
 <body>
@@ -853,6 +854,29 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     <figure><img src="img/ron-yearbook.jpg" data-lb="Ron Berget in high school, early 1970s" alt="A school portrait of a smiling young man with fair hair swept across his forehead and dark-rimmed glasses, in a jacket, a wide-collared shirt and a patterned tie." style="object-position:50% 22%"><figcaption>Ron Berget<small>in high school, early 1970s</small></figcaption></figure>
     <figure><img src="img/larry.jpg" data-lb="Larry Berget as a boy, in his baseball uniform. The S is possibly Sacramento: the family moved to California in January 1956 and stayed two years." alt="A smiling boy in a baseball cap and a white uniform with a script S and the number 3, sitting with a glove on his knees." style="object-position:50% 12%"><figcaption>Larry Berget<small>as a boy, number 3 · the S is possibly Sacramento</small></figcaption></figure>
     <figure><img src="img/family-1950s.jpg" data-lb="Ronald and Clarissa Berget at home with their children. Ron Berget is the baby." alt="A family of ten posed on a sofa in a living room." style="object-position:50% 40%"><figcaption>The whole family, 1950s</figcaption></figure>
+  </div>
+  <div class="two" style="grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);margin-top:56px">
+    <div class="who" style="max-width:none"><img src="img/family-ronald-holding-ron.jpg" data-lb="Ronald holding Ron, with Corrine, Larry, Clarissa, Mary Ann and Russ. Names written on the print. Mid-1950s." alt="A family standing in a living room: a man in a hat holding a toddler, a teenage girl, a boy, a woman in glasses, a girl in a light jacket, and a boy in a dark jacket in front. Names are written on the print.">
+      <button type="button" data-p="ronald-oneil-berget-1908" style="left:17%;top:4%;width:13%;height:13%"><span>Ronald O'Neil Berget</span></button>
+      <button type="button" style="left:20%;top:17%;width:13%;height:12%"><span>Ron Berget<small>the toddler</small></span></button>
+      <button type="button" style="left:42%;top:16%;width:10%;height:12%"><span>Corrine</span></button>
+      <button type="button" style="left:51%;top:17%;width:10%;height:12%"><span>Larry</span></button>
+      <button type="button" data-p="clarissa-angeline-fylling-1909" style="left:62%;top:14%;width:11%;height:14%"><span>Clarissa Berget</span></button>
+      <button type="button" style="left:73%;top:18%;width:12%;height:14%"><span>Mary Ann</span></button>
+      <button type="button" style="left:49%;top:29%;width:12%;height:14%"><span>Russ</span></button>
+    </div>
+    <div style="display:grid;gap:16px;align-content:start">
+      <span class="mono">At home</span>
+      <p class="say" style="min-height:0">Ronald holds Ron, with Corrine, Larry, Clarissa, Mary Ann and Russ.</p>
+      <p style="color:var(--muted)">The names are written on the print. Ron looks about two, so this is probably 1956.</p>
+    </div>
+  </div>
+
+  <div class="faces sq2" style="margin-top:40px">
+    <figure><img src="img/siblings-early.jpg" data-lb="Six of the Berget children in a studio portrait, before Ron was born. Late 1940s or early 1950s." alt="A studio portrait of six children: three older children standing in back, a girl in glasses and two boys, and three younger children in front." style="object-position:50% 55%"><figcaption>The early years<small>six of the children, before Ron was born</small></figcaption></figure>
+    <figure><img src="img/family-boat.jpg" data-lb="Clarissa and Ronald with some of the children and the boat, late 1950s." alt="A woman in a striped dress, a man in a striped shirt and cap, a teenage girl, and three boys standing in front of a boat on a trailer." style="object-position:50% 40%"><figcaption>The boat<small>Clarissa and Ronald with some of the children, late 1950s</small></figcaption></figure>
+    <figure><img src="img/crooked-lake-cabin.jpg" data-lb="The family cabin at Crooked Lake, North Dakota. The lake covers part of what was once the Berget farmland." alt="A small white cabin with a red roof among bare trees, next to a lake." style="object-position:70% 50%"><figcaption>Crooked Lake<small>the cabin</small></figcaption></figure>
+    <figure><img src="img/berget-brothers.jpg" data-lb="Four of the Berget brothers, about the 1980s. Names to come." alt="Four men standing arm in arm in a living room, three in white shirts and one in a striped shirt." style="object-position:50% 25%"><figcaption>The brothers<small>about the 1980s, names to come</small></figcaption></figure>
   </div>
   <p class="foot" style="margin-top:40px">The children's names are from two obituaries: <a href="https://www.genlookups.com/nd/webbbs_config.pl/noframes/read/721" target="_blank" rel="noopener" style="color:var(--gold)">Clarissa Berget, 2000</a> and <a href="https://www.schnackenbergfh.com/obituary/CHARLES-BERGET" target="_blank" rel="noopener" style="color:var(--gold)">Charles O. Berget, 2018</a>.</p>
 </div></section>
