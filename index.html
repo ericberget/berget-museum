@@ -570,6 +570,20 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   #v-faces .two figure figure, #v-faces .two > div figure { max-width: 60% !important; margin-top: 10px !important; }
 }
 .faces.sq2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .faces.sq2 figure img { aspect-ratio: 1 / 1; }
+.mf-cta { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); align-items: center; gap: 32px; margin-top: 72px; padding: 36px 40px; border-radius: var(--r); text-decoration: none; color: inherit; background: linear-gradient(120deg, rgba(29,51,64,.55), rgba(255,122,79,.08)); border: 1px solid rgba(237,243,245,.14); overflow: hidden; transition: border-color .25s; }
+.mf-cta:hover { border-color: rgba(255,122,79,.55); }
+.mf-txt { display: grid; gap: 10px; }
+.mf-txt b { font-family: Poppins, sans-serif; font-weight: 800; text-transform: uppercase; font-size: clamp(40px, 6vw, 84px); line-height: .9; letter-spacing: -.01em; color: transparent; -webkit-text-stroke: 1.5px var(--ink); transition: color .3s, -webkit-text-stroke-color .3s; }
+.mf-cta:hover .mf-txt b { color: var(--flare); -webkit-text-stroke-color: var(--flare); }
+.mf-txt small { color: var(--muted); font-size: 16px; max-width: 34ch; }
+.mf-txt em { font-style: normal; font-family: var(--mono, monospace); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); margin-top: 6px; }
+.mf-fan { position: relative; height: 230px; }
+.mf-fan i { position: absolute; top: 50%; left: calc(8% + var(--i) * 15%); width: 30%; aspect-ratio: 4 / 5; transform: translate(-50%, -50%) rotate(var(--r)); background: #efe9dc; padding: 6px 6px 18px; box-shadow: 0 14px 30px rgba(0,0,0,.45); transition: transform .45s cubic-bezier(.2,.8,.2,1), left .45s cubic-bezier(.2,.8,.2,1); }
+.mf-fan i img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(.35); }
+.mf-cta:hover .mf-fan i { left: calc(9% + var(--i) * 17%); transform: translate(-50%, -56%) rotate(calc(var(--r) * .4)); }
+.mf-cta:hover .mf-fan i:nth-child(odd) { transform: translate(-50%, -44%) rotate(calc(var(--r) * .4)); }
+@media (max-width: 760px) { .mf-cta { grid-template-columns: minmax(0, 1fr); padding: 28px 22px; gap: 18px; } .mf-fan { height: 170px; order: -1; } .mf-fan i { width: 34%; } }
+@media (prefers-reduced-motion: reduce) { .mf-fan i { transition: none; } }
 </style>
 </head>
 <body>
@@ -778,7 +792,10 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     <figure><img src="img/fylling.jpg" data-lb="Olaf and Anna Fylling" alt="A man in a hat and a woman in a dark coat standing outdoors."><figcaption><button type="button" class="pn" data-p="olaf-fylling-1884">Olaf</button> and Anna Fylling<small>Olaf was born in 1884 near Ålesund</small></figcaption></figure>
     <figure><img src="img/eliason1898.jpg" data-lb="The Eliason family, 1898" alt="A large family group posed for a studio photograph in 1898." style="object-position:50% 40%"><figcaption>The Eliason family, 1898<small>Anna's family</small></figcaption></figure>
   </div>
-  <a class="more-btn" href="#more-faces"><span class="mono">Keep going</span><b>More faces →</b><small>The Fyllings, Ron Berget's brothers and the rest of the family</small></a>
+  <a class="mf-cta" href="#more-faces">
+    <div class="mf-txt"><span class="mono">Keep going · 14 more photographs</span><b>More faces</b><small>The Fyllings, the Eliasons, and Ron Berget's brothers and sisters</small><em>Open the album →</em></div>
+    <div class="mf-fan" aria-hidden="true"><i style="--r:-9deg;--i:0"><img src="img/fylling-family-1940.jpg" alt="" loading="lazy" style="object-position:50% 30%"></i><i style="--r:-4deg;--i:1"><img src="img/elias-marie.jpg" alt="" loading="lazy" style="object-position:50% 30%"></i><i style="--r:2deg;--i:2"><img src="img/siblings-early.jpg" alt="" loading="lazy" style="object-position:50% 40%"></i><i style="--r:-2deg;--i:3"><img src="img/family-ronald-holding-ron.jpg" alt="" loading="lazy" style="object-position:50% 25%"></i><i style="--r:5deg;--i:4"><img src="img/berget-brothers.jpg" alt="" loading="lazy" style="object-position:50% 30%"></i><i style="--r:10deg;--i:5"><img src="img/ron-yearbook.jpg" alt="" loading="lazy" style="object-position:50% 22%"></i></div>
+  </a>
 </div></section>
 
 <section class="view" id="v-timeline" hidden>
