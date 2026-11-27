@@ -613,6 +613,24 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .feat-tell .feat-btn { justify-self: start; }
 }
 @media (prefers-reduced-motion: reduce) { .feat > img { transition: none; } }
+.tn { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 48px; align-items: center; margin: 96px 0 8px; }
+.tn-txt { display: grid; gap: 16px; align-content: center; }
+.tn-txt h2 { font-family: Poppins, sans-serif; font-weight: 800; text-transform: uppercase; font-size: clamp(38px, 5vw, 72px); line-height: .92; color: transparent; -webkit-text-stroke: 1.5px var(--ink); margin: 0; }
+.tn-txt .feat-btn { justify-self: start; text-decoration: none; }
+.tn-txt p { color: rgba(237,243,245,.82); font-size: 17px; line-height: 1.55; margin: 0; max-width: 42ch; }
+.tn-box { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--r); box-shadow: 0 24px 60px rgba(0,0,0,.5); user-select: none; touch-action: pan-y; }
+.tn-box img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.tn-now { object-position: 50% 55%; }
+.tn-then { clip-path: inset(0 calc(100% - var(--p)) 0 0); filter: sepia(.15); }
+.tn-bar { position: absolute; top: 0; bottom: 0; left: var(--p); width: 2px; margin-left: -1px; background: var(--ink); pointer-events: none; }
+.tn-bar i { position: absolute; top: 50%; left: 50%; width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 50%; background: var(--ink); box-shadow: 0 4px 14px rgba(0,0,0,.4); }
+.tn-bar i::before { content: "‹ ›"; position: absolute; inset: 0; display: grid; place-items: center; color: #15191c; font: 700 18px/1 Poppins, sans-serif; letter-spacing: 2px; }
+.tn-lab { position: absolute; top: 14px; padding: 5px 10px; border-radius: 999px; background: rgba(21,25,28,.72); font: 12px/1 var(--mono, ui-monospace, monospace); letter-spacing: .1em; text-transform: uppercase; pointer-events: none; }
+.tn-l { left: 14px; } .tn-r { right: 14px; }
+.tn-box input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+.tn-cred { grid-column: 2; margin: -32px 0 0; font: 11px/1.5 var(--mono, ui-monospace, monospace); color: var(--muted); }
+.tn-cred a { color: var(--muted); }
+@media (max-width: 760px) { .tn { grid-template-columns: minmax(0, 1fr); gap: 20px; margin-top: 64px; } .tn-cred { grid-column: 1; margin-top: -8px; } }
 </style>
 </head>
 <body>
@@ -632,6 +650,18 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
       <span class="feat-btn">Fly over the farm →</span>
     </div>
   </a>
+
+  <div class="gut"><section class="tn">
+    <div class="tn-txt"><span class="mono">Then and now</span><h2>Nes church</h2><p>The white church at Nes was built in 1862 to replace the old stave church. Drag the line to see it today.</p><a class="feat-btn" href="#art">More of Nes →</a></div>
+    <div class="tn-box" style="--p:50%">
+      <img class="tn-now" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Nes_kirke_%28Nesbyen%29.jpg/1280px-Nes_kirke_%28Nesbyen%29.jpg" alt="Nes church in Nesbyen today, a large white wooden church with a pointed spire, in summer." loading="lazy">
+      <img class="tn-then" src="img/nes-church-then.jpg" alt="Nes church in the 1860s, from a hand-colored print, standing alone below the mountains." loading="lazy">
+      <span class="tn-lab tn-l">1860s</span><span class="tn-lab tn-r">Today</span>
+      <span class="tn-bar" aria-hidden="true"><i></i></span>
+      <input type="range" min="0" max="100" value="50" aria-label="Drag to compare the 1860s print with a photo from today">
+    </div>
+    <p class="tn-cred">1860s: hand-colored print, artist unknown. Today: photo by Jan-Tore Egge, 2012, <a href="https://commons.wikimedia.org/wiki/File:Nes_kirke_(Nesbyen).jpg" target="_blank" rel="noopener">CC BY-SA 3.0</a>.</p>
+  </section></div>
 
   <a class="feat feat-r" href="#art">
     <img src="img/gude-hallingdal-valley.jpg" alt="" loading="lazy" style="object-position:50% 60%;filter:saturate(.9) brightness(.8)">
@@ -2026,5 +2056,6 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   show();
 })();
 </script>
+<script>document.querySelectorAll('.tn-box').forEach(b=>{const r=b.querySelector('input');const f=()=>b.style.setProperty('--p',r.value+'%');r.addEventListener('input',f);f();});</script>
 </body>
 </html>
