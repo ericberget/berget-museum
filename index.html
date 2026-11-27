@@ -650,6 +650,10 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .fy-p small { font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .fy-p i { font-style: normal; font-size: 13.5px; color: var(--muted); }
 .fy-me { border-color: var(--flare); }
+.fy-av { display: flex; margin-bottom: 10px; } .fy-join .fy-av { justify-content: center; }
+.fy-av img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid var(--bg); box-shadow: 0 0 0 1px var(--rule); }
+.fy-av img + img { margin-left: -10px; }
+
 .fy-tl { border-top: 1px solid var(--rule); max-width: 900px; }
 .fy-r { display: grid; grid-template-columns: 72px minmax(0, 1fr) auto; gap: 18px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--rule); }
 .fy-r b { font-family: Poppins, sans-serif; font-weight: 700; font-size: 20px; color: transparent; -webkit-text-stroke: 1px var(--ink); }
@@ -1072,12 +1076,12 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     </div>
     <div class="fy-col"><span class="mono">Eliason</span>
       <div class="fy-p"><small>3× great-grandparents</small><button type="button" class="pn" data-p="andreas-benjamin-jensen-1794">Andreas Benjamin Jensen</button> and <button type="button" class="pn" data-p="elen-johanna-eliasdatter-1799">Elen Johanna</button>; <button type="button" class="pn" data-p="ole-olsen-mardal-1788">Ole Olsen</button> and <button type="button" class="pn" data-p="anne-marie-olsdatter-mardal">Anne Marie</button><i>Sømhovd and Mardal, Sømna</i></div>
-      <div class="fy-p"><small>Great-great-grandparents</small><button type="button" class="pn" data-p="elias-andreason-1830">Elias Andreassen</button> and <button type="button" class="pn" data-p="marie-olesdatter-mardal">Marie Adrianna Olsdatter</button><i>Mardal, 1856 to 1887</i></div>
-      <div class="fy-p"><small>Great-grandparents</small><button type="button" class="pn" data-p="albert-eliason-1859">Albert Eliason</button> and <button type="button" class="pn" data-p="elinora-olson-malm-1861">Eleonora Olsdatter</button><i>Sandvær, then Lidgerwood and Luck</i></div>
+      <div class="fy-p"><span class="fy-av"><img src="img/av-elias.jpg" alt="Elias Andreassen" title="Elias Andreassen" loading="lazy"><img src="img/av-marie.jpg" alt="Marie Adrianna Olsdatter" title="Marie Adrianna Olsdatter" loading="lazy"></span><small>Great-great-grandparents</small><button type="button" class="pn" data-p="elias-andreason-1830">Elias Andreassen</button> and <button type="button" class="pn" data-p="marie-olesdatter-mardal">Marie Adrianna Olsdatter</button><i>Mardal, 1856 to 1887</i></div>
+      <div class="fy-p"><span class="fy-av"><img src="img/av-albert.jpg" alt="Albert, from the 1898 family photo" title="Albert, from the 1898 family photo" loading="lazy"><img src="img/av-eleonora.jpg" alt="Eleonora, from the 1898 family photo" title="Eleonora, from the 1898 family photo" loading="lazy"></span><small>Great-grandparents</small><button type="button" class="pn" data-p="albert-eliason-1859">Albert Eliason</button> and <button type="button" class="pn" data-p="elinora-olson-malm-1861">Eleonora Olsdatter</button><i>Sandvær, then Lidgerwood and Luck</i></div>
     </div>
-    <div class="fy-join"><div class="fy-p"><small>Grandparents · married 1907</small><button type="button" class="pn" data-p="olaf-fylling-1884">Olaf Fylling</button> and <button type="button" class="pn" data-p="anna-eliason-1887">Anna Eliason</button><i>Lidgerwood, then Ruso and Turtle Lake</i></div>
-      <div class="fy-p"><small>Mother · married Ronald Berget 1933</small><button type="button" class="pn" data-p="clarissa-angeline-fylling-1909">Clarissa Fylling Berget</button><i>1909 to 2000</i></div>
-      <div class="fy-p fy-me"><small>Ron Berget</small>and his brothers and sisters</div></div>
+    <div class="fy-join"><div class="fy-p"><span class="fy-av"><img src="img/av-olaf.jpg" alt="Olaf Fylling" title="Olaf Fylling" loading="lazy"><img src="img/av-anna.jpg" alt="Anna Fylling" title="Anna Fylling" loading="lazy"></span><small>Grandparents · married 1907</small><button type="button" class="pn" data-p="olaf-fylling-1884">Olaf Fylling</button> and <button type="button" class="pn" data-p="anna-eliason-1887">Anna Eliason</button><i>Lidgerwood, then Ruso and Turtle Lake</i></div>
+      <div class="fy-p"><span class="fy-av"><img src="img/av-clarissa.jpg" alt="Clarissa, about 1940" title="Clarissa, about 1940" loading="lazy"></span><small>Mother · married Ronald Berget 1933</small><button type="button" class="pn" data-p="clarissa-angeline-fylling-1909">Clarissa Fylling Berget</button><i>1909 to 2000</i></div>
+      <div class="fy-p fy-me"><span class="fy-av"><img src="img/av-ron.jpg" alt="Ron Berget as a boy" title="Ron Berget as a boy" loading="lazy"></span><small>Ron Berget</small>and his brothers and sisters</div></div>
   </div>
 
   <h2 class="nm-h">Stories</h2>
