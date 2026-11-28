@@ -231,7 +231,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .pc { position: fixed; top: 0; right: 0; bottom: 0; z-index: 30; width: min(430px, 100%); background: var(--bg2) var(--grain); border-left: 1px solid var(--rule); box-shadow: -30px 0 60px -30px #000; overflow: auto; padding: 22px 24px 40px; display: grid; gap: 14px; align-content: start; }
 .pc .x { justify-self: end; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--rule); font-size: 18px; line-height: 1; }
 .pc img { border-radius: var(--r); width: 100%; max-height: 300px; object-fit: cover; object-position: 50% 25%; } .pc-two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; } .pc .pc-cap { margin: 10px 0 0; font-size: 11px; line-height: 1.5; color: var(--muted); }
-.pc h2 { font-weight: 600; font-size: 32px; line-height: 1.02; letter-spacing: -.03em; }
+.pc h2 { font-weight: 600; font-size: 32px; line-height: 1.02; letter-spacing: -.03em; } .pc-yrs { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 10px; margin-top: -4px; } .pc-yrs b { font-family: var(--sans); font-weight: 700; font-size: 34px; line-height: 1; letter-spacing: -.02em; color: var(--flare); font-variant-numeric: tabular-nums; } .pc-yrs i, .pc-yrs span { font-family: var(--mono); font-style: normal; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); } .pc-yrs span { margin-left: 4px; } .pc #pc-main { max-height: 340px; } .pc #pc-mcap { margin-top: -4px; } .pc-th { display: flex; flex-wrap: wrap; gap: 8px; } .pc-th button { width: 56px; height: 56px; padding: 0; border-radius: 6px; overflow: hidden; border: 1px solid var(--rule); opacity: .6; transition: opacity .2s, border-color .2s; } .pc-th button.on, .pc-th button:hover { opacity: 1; border-color: var(--flare); } .pc .pc-th img { width: 100%; height: 100%; max-height: none; border-radius: 0; box-shadow: none; display: block; }
 .pc dl { display: grid; gap: 0; } .pc dl > div { display: grid; grid-template-columns: 6.2em minmax(0, 1fr); gap: 10px; padding: 9px 0; border-top: 1px solid var(--rule); font-size: 15px; }
 .pc dt { font-family: var(--mono); font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding-top: 3px; }
 .pc dd .pn { display: inline; margin-right: 10px; }
@@ -350,7 +350,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .art figcaption p { font-size: 14px; color: var(--muted); max-width: 44ch; }
 .art figcaption small { font-size: 12px; color: var(--muted); opacity: .8; }
 .art figcaption a { color: var(--gold); text-decoration: none; } .art figcaption a:hover { color: var(--flare); }
-.ww-bar { display: flex; gap: 14px; align-items: center; margin: 4px 0 8px; flex-wrap: wrap; }
+.ww-bar { display: flex; gap: 14px; align-items: center; margin: 4px 0 8px; flex-wrap: wrap; position: relative; } .ww-ac { position: absolute; left: 0; top: calc(100% + 6px); z-index: 12; width: min(520px, 100%); background: var(--bg2) var(--grain); border: 1px solid var(--rule); border-radius: 14px; box-shadow: 0 24px 50px -18px #000; padding: 6px; display: grid; } .ww-ac[hidden] { display: none; } .ww-ac button { display: grid; grid-template-columns: 38px minmax(0, 1fr) auto; gap: 12px; align-items: center; text-align: left; padding: 7px 10px; border-radius: 9px; font-size: 15px; color: var(--ink); } .ww-ac button:hover, .ww-ac button.on { background: rgba(237,243,245,.07); } .ww-ac img, .ww-ac .ini { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; object-position: 50% 22%; } .ww-ac .ini { display: grid; place-items: center; border: 1px solid var(--rule); font-family: var(--mono); font-size: 13px; color: var(--muted); } .ww-ac .nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .ww-ac .ys { font-family: var(--sans); font-weight: 600; font-size: 12.5px; color: var(--flare); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .ww-bar input { flex: 1; min-width: 220px; font: inherit; font-size: 16px; color: var(--ink); background: rgba(237,243,245,.04); border: 1px solid var(--rule); border-radius: 99px; padding: 11px 18px; }
 .ww-bar input:focus { outline: none; border-color: var(--flare); } .ww-bar .mono { font-size: 11px; color: var(--muted); }
 .ww { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 36px; margin-top: 8px; }
@@ -956,7 +956,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
 <section class="view" id="v-who" hidden><div class="gut">
   <div class="head"><span class="mono">Extra · index</span><h1>Who's who</h1><p>Everyone in the family tree behind this site, from A to Z. Tap a name for dates and family. Where a person turns up on a page or in a story, the links take you there.</p></div>
-  <div class="ww-bar"><input type="search" id="ww-q" placeholder="Search a name, a farm or a place" aria-label="Search names"><span class="mono" id="ww-n"></span></div>
+  <div class="ww-bar"><input type="search" id="ww-q" placeholder="Search a name, a farm or a place" aria-label="Search names" autocomplete="off" role="combobox" aria-controls="ww-ac" aria-expanded="false"><span class="mono" id="ww-n"></span><div class="ww-ac" id="ww-ac" role="listbox" hidden></div></div>
   <h2 class="nm-h">Living family</h2>
   <p class="nm-p">Ronald and Clarissa's eight children: Reuben, Charles, Corrine, Roselyn (Rosy), Larry, Mary Ann, Russell (Russ) and Ron, the youngest. The names and order are from the <a href="#story-fifty-years">1983 anniversary article</a>. Photographs of them are on <a href="#faces">Faces</a> and <a href="#more-faces">More faces</a>.</p>
   <h2 class="nm-h">In the family tree</h2>
@@ -1633,22 +1633,37 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     pages.forEach(function (v) { var sec = $('#v-' + v[0]); if (!sec || v[0] === 'who') return; sec.querySelectorAll('[data-p]').forEach(function (b) { var id = b.dataset.p; on[id] = on[id] || []; if (!on[id].some(function (x) { return x[0] === '#' + v[0]; })) on[id].push(['#' + v[0], v[1]]); }); });
     if (typeof STORIES !== 'undefined') STORIES.forEach(function (st) { (st.p || '').split(',').forEach(function (id) { id = id.trim(); if (!id) return; on[id] = on[id] || []; on[id].push(['#story-' + st.id, 'Story: ' + (st.h || st.k)]); }); });
     var nice = function (n) { return n.replace(/[?]+/g, '').split(' ').map(function (w) { return w.length > 1 && w === w.toUpperCase() && /[A-ZÆØÅ]/.test(w) ? w.charAt(0) + w.slice(1).toLowerCase() : w; }).join(' ').trim(); };
-    var yr = function (a) { return a && a[0] ? (String(a[0]).match(/1[0-9]{3}/) || [''])[0] : ''; };
+    var yr = function (a) { return a && a[0] ? (String(a[0]).match(/(1[0-9]|20)[0-9]{2}/) || [''])[0] : ''; };
     var seen = {}, ids = Object.keys(P).filter(function (id) { var p = P[id], k = nice(p.n).toLowerCase() + '|' + yr(p.b);
       if (seen[k]) { var o = seen[k]; (on[id] || []).forEach(function (l) { on[o] = on[o] || []; if (!on[o].some(function (x) { return x[0] === l[0]; })) on[o].push(l); }); return false; }
       seen[k] = id; return true; }).sort(function (a, b) { return nice(P[a].n).localeCompare(nice(P[b].n), 'nb'); }), last = '', h = '';
     ids.forEach(function (id) { var p = P[id], nm = nice(p.n), L = nm.charAt(0).toUpperCase();
       if (L !== last) { h += '<div class="ww-l">' + L + '</div>'; last = L; }
-      var yb = p.b && p.b[0] ? (String(p.b[0]).match(/1[0-9]{3}/) || [''])[0] : '', yd = p.d && p.d[0] ? (String(p.d[0]).match(/1[0-9]{3}/) || [''])[0] : '', pl = p.b && p.b[1] ? String(p.b[1]).split(',')[0] : '';
+      var yb = p.b && p.b[0] ? (String(p.b[0]).match(/1[0-9]{3}/) || [''])[0] : '', yd = yr(p.d), pl = p.b && p.b[1] ? String(p.b[1]).split(',')[0] : '';
       var yrs = (yb || yd) ? (yb || '?') + (yd ? ' to ' + yd : '') : ''; yrs = [yrs, pl].filter(Boolean).join(' · ');
       var links = (on[id] || []).map(function (l) { return '<a href="' + l[0] + '">' + esc(l[1]) + '</a>'; }).join('');
-      h += '<div class="ww-r' + (p.i ? '' : ' np') + '" data-q="' + esc((nm + ' ' + yrs).toLowerCase()) + '">' + (p.i ? '<img class="ph" src="img/' + p.i + '.jpg" alt="" loading="lazy">' : '') +
+      var av = p.a || p.i; h += '<div class="ww-r' + (av ? '' : ' np') + '" data-q="' + esc((nm + ' ' + yrs).toLowerCase()) + '">' + (av ? '<img class="ph" src="img/' + av + '.jpg" alt="" loading="lazy">' : '') +
         '<div><button type="button" class="pn" data-p="' + id + '">' + esc(nm) + '</button>' + (yrs ? '<span class="yrs">' + esc(yrs) + '</span>' : '') + (links ? '<span class="on">' + links + '</span>' : '') + '</div></div>'; });
     $('#ww').innerHTML = h; var n = $('#ww-n'); n.textContent = ids.length + ' people';
     $('#ww-q').addEventListener('input', function () { var q = this.value.trim().toLowerCase(), c = 0;
       $('#ww').querySelectorAll('.ww-r').forEach(function (r) { var m = !q || r.dataset.q.indexOf(q) >= 0; r.hidden = !m; if (m) c++; });
       $('#ww').querySelectorAll('.ww-l').forEach(function (l) { var x = l.nextElementSibling, any = false; while (x && !x.classList.contains('ww-l')) { if (!x.hidden) any = true; x = x.nextElementSibling; } l.hidden = !any; });
-      n.textContent = q ? c + ' found' : ids.length + ' people'; });
+      n.textContent = q ? c + ' found' : ids.length + ' people'; suggest(q); });
+    var ac = $('#ww-ac'), acI = -1;
+    function suggest(q) { acI = -1; if (!q) { ac.hidden = true; ac.innerHTML = ''; return; }
+      var a = [], b2 = []; ids.forEach(function (id) { var nm = nice(P[id].n).toLowerCase(); if (nm.indexOf(q) === 0 || nm.split(/[ "]+/).some(function (w) { return w.indexOf(q) === 0; })) a.push(id); else if (nm.indexOf(q) > 0) b2.push(id); });
+      a.sort(function (x, y) { return (P[y].a || P[y].i ? 1 : 0) - (P[x].a || P[x].i ? 1 : 0); });
+      var list = a.concat(b2).slice(0, 7);
+      ac.innerHTML = list.map(function (id) { var p = P[id], nm = nice(p.n), av = p.a || p.i, yb = yr(p.b), yd = yr(p.d), ys = (yb || yd) ? (yb || '?') + (yd ? ' to ' + yd : '') : '';
+        return '<button type="button" role="option" data-p="' + id + '">' + (av ? '<img src="img/' + av + '.jpg" alt="">' : '<span class="ini">' + esc(nm.charAt(0)) + '</span>') + '<span class="nm">' + esc(nm) + '</span>' + (ys ? '<span class="ys">' + ys + '</span>' : '') + '</button>'; }).join('');
+      ac.hidden = !list.length; }
+    $('#ww-q').addEventListener('keydown', function (e) { var o = ac.querySelectorAll('button'); if (ac.hidden || !o.length) return;
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); acI = (acI + (e.key === 'ArrowDown' ? 1 : -1) + o.length) % o.length; o.forEach(function (x, j) { x.classList.toggle('on', j === acI); }); }
+      else if (e.key === 'Enter') { e.preventDefault(); o[acI < 0 ? 0 : acI].click(); }
+      else if (e.key === 'Escape') { ac.hidden = true; e.stopPropagation(); } });
+    $('#ww-q').addEventListener('focus', function () { if (ac.innerHTML) ac.hidden = false; });
+    ac.addEventListener('click', function () { ac.hidden = true; });
+    document.addEventListener('click', function (e) { if (!e.target.closest('.ww-bar')) ac.hidden = true; });
   }
   function show() {
     var name = location.hash.replace('#', ''), sid = '';
@@ -1780,15 +1795,19 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     var link = function (x) { return PPL[x] ? '<button type="button" class="pn" data-p="' + x + '">' + esc(PPL[x].n) + '</button>' : ''; };
     var row = function (k, v) { return v ? '<div><dt>' + k + '</dt><dd>' + v + '</dd></div>' : ''; };
     var when = function (f) { return f ? esc(f[0]) + (f[1] ? '<br><span style="color:var(--muted)">' + esc(f[1]) + '</span>' : '') : ''; };
-    $('#pc').innerHTML = '<button type="button" class="x" aria-label="Close">×</button>' + (p.i ? '<img src="img/' + p.i + '.jpg" alt="">' : '') + (p.ii ? '<div class="pc-two">' + p.ii.map(function (x) { return '<img src="img/' + x + '.jpg" alt="">'; }).join('') + '</div><p class="mono pc-cap">' + esc(p.ic) + '</p>' : '') +
-      '<h2>' + esc(p.n) + '</h2>' + (p.t ? '<p>' + esc(p.t) + '</p>' : '') + '<dl>' + row('Born', when(p.b)) + row('Died', when(p.d)) + row('Buried', p.g ? esc(p.g[0]) + '<br><a href="' + p.g[1] + '" target="_blank" rel="noopener" style="color:var(--flare);text-decoration:none">Directions to the cemetery ↗</a><br><a href="' + p.g[2] + '" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none;font-size:13px">Source: church burial list ↗</a>' : '') + row('Father', p.f && link(p.f)) + row('Mother', p.m && link(p.m)) +
+    $('#pc').innerHTML = '<button type="button" class="x" aria-label="Close">×</button>' + (p.x ? '<img id="pc-main" src="img/' + p.x[0][0] + '.jpg" alt="">' + '<p class="mono pc-cap" id="pc-mcap">' + esc(p.x[0][1]) + '</p>' + (p.x.length > 1 ? '<div class="pc-th">' + p.x.map(function (x, j) { return '<button type="button" data-px="' + j + '"' + (j ? '' : ' class="on"') + ' aria-label="' + esc(x[1]) + '"><img src="img/' + x[0] + '.jpg" alt=""></button>'; }).join('') + '</div>' : '') : p.i ? '<img src="img/' + p.i + '.jpg" alt="">' : '') + (p.ii ? '<div class="pc-two">' + p.ii.map(function (x) { return '<img src="img/' + x + '.jpg" alt="">'; }).join('') + '</div><p class="mono pc-cap">' + esc(p.ic) + '</p>' : '') +
+      '<h2>' + esc(p.n) + '</h2>' + life(p) + (p.t ? '<p>' + esc(p.t) + '</p>' : '') + '<dl>' + row('Born', when(p.b)) + row('Died', when(p.d)) + row('Buried', p.g ? esc(p.g[0]) + '<br><a href="' + p.g[1] + '" target="_blank" rel="noopener" style="color:var(--flare);text-decoration:none">Directions to the cemetery ↗</a><br><a href="' + p.g[2] + '" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none;font-size:13px">Source: church burial list ↗</a>' : '') + row('Father', p.f && link(p.f)) + row('Mother', p.m && link(p.m)) +
       row('Married', (p.s || []).map(link).join('')) + row('Children', (p.c || []).map(link).join('')) + '</dl>';
-    $('#pc').hidden = false; $('#pc').scrollTop = 0;
+    $('#pc').hidden = false; $('#pc').scrollTop = 0; $('#pc').dataset.id = id;
   }
+  function yearOf(a) { return a && a[0] ? (String(a[0]).match(/(1[0-9]|20)[0-9]{2}/) || [''])[0] : ''; }
+  function life(p) { var b = yearOf(p.b), d = yearOf(p.d); if (!b && !d) return '';
+    return '<div class="pc-yrs">' + (b && d ? '<b>' + b + '</b><i>to</i><b>' + d + '</b><span>about ' + (d - b) + ' years</span>' : b ? '<i>born</i><b>' + b + '</b>' : '<i>died</i><b>' + d + '</b>') + '</div>'; }
   document.addEventListener('click', function (e) {
     var md = e.target.closest('[data-mode]'); if (md && window.ROCK) { window.ROCK.mode(md.dataset.mode); return; }
     var g = e.target.closest('#rk-tog'); if (g) { var m = $('#rk').classList.toggle('rk-min'); g.textContent = m ? 'Show text' : 'Hide'; g.setAttribute('aria-expanded', m ? 'false' : 'true'); return; }
     var k = e.target.closest('[data-rk]'); if (k && window.ROCK) { window.ROCK.fly(k.dataset.rk); return; }
+    var th = e.target.closest('[data-px]'); if (th) { var px = PPL[$('#pc').dataset.id].x[+th.dataset.px]; $('#pc-main').src = 'img/' + px[0] + '.jpg'; $('#pc-mcap').textContent = px[1]; $('#pc').querySelectorAll('[data-px]').forEach(function (o) { o.classList.toggle('on', o === th); }); return; }
     var b = e.target.closest('[data-p]');
     if (b) { person(b.dataset.p); return; }
     if (e.target.closest('.pc .x') || !e.target.closest('.pc')) $('#pc').hidden = true;
