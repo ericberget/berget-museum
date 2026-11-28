@@ -230,7 +230,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .ppl { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 14px; align-items: baseline; }
 .pc { position: fixed; top: 0; right: 0; bottom: 0; z-index: 30; width: min(430px, 100%); background: var(--bg2) var(--grain); border-left: 1px solid var(--rule); box-shadow: -30px 0 60px -30px #000; overflow: auto; padding: 22px 24px 40px; display: grid; gap: 14px; align-content: start; }
 .pc .x { justify-self: end; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--rule); font-size: 18px; line-height: 1; }
-.pc img { border-radius: var(--r); width: 100%; max-height: 300px; object-fit: cover; object-position: 50% 25%; }
+.pc img { border-radius: var(--r); width: 100%; max-height: 300px; object-fit: cover; object-position: 50% 25%; } .pc-two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; } .pc .pc-cap { margin: 10px 0 0; font-size: 11px; line-height: 1.5; color: var(--muted); }
 .pc h2 { font-weight: 600; font-size: 32px; line-height: 1.02; letter-spacing: -.03em; }
 .pc dl { display: grid; gap: 0; } .pc dl > div { display: grid; grid-template-columns: 6.2em minmax(0, 1fr); gap: 10px; padding: 9px 0; border-top: 1px solid var(--rule); font-size: 15px; }
 .pc dt { font-family: var(--mono); font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding-top: 3px; }
@@ -1771,7 +1771,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     var link = function (x) { return PPL[x] ? '<button type="button" class="pn" data-p="' + x + '">' + esc(PPL[x].n) + '</button>' : ''; };
     var row = function (k, v) { return v ? '<div><dt>' + k + '</dt><dd>' + v + '</dd></div>' : ''; };
     var when = function (f) { return f ? esc(f[0]) + (f[1] ? '<br><span style="color:var(--muted)">' + esc(f[1]) + '</span>' : '') : ''; };
-    $('#pc').innerHTML = '<button type="button" class="x" aria-label="Close">×</button>' + (p.i ? '<img src="img/' + p.i + '.jpg" alt="">' : '') +
+    $('#pc').innerHTML = '<button type="button" class="x" aria-label="Close">×</button>' + (p.i ? '<img src="img/' + p.i + '.jpg" alt="">' : '') + (p.ii ? '<div class="pc-two">' + p.ii.map(function (x) { return '<img src="img/' + x + '.jpg" alt="">'; }).join('') + '</div><p class="mono pc-cap">' + esc(p.ic) + '</p>' : '') +
       '<h2>' + esc(p.n) + '</h2>' + (p.t ? '<p>' + esc(p.t) + '</p>' : '') + '<dl>' + row('Born', when(p.b)) + row('Died', when(p.d)) + row('Buried', p.g ? esc(p.g[0]) + '<br><a href="' + p.g[1] + '" target="_blank" rel="noopener" style="color:var(--flare);text-decoration:none">Directions to the cemetery ↗</a><br><a href="' + p.g[2] + '" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none;font-size:13px">Source: church burial list ↗</a>' : '') + row('Father', p.f && link(p.f)) + row('Mother', p.m && link(p.m)) +
       row('Married', (p.s || []).map(link).join('')) + row('Children', (p.c || []).map(link).join('')) + '</dl>';
     $('#pc').hidden = false; $('#pc').scrollTop = 0;
