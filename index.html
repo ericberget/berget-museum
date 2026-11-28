@@ -309,6 +309,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .lbs input::-webkit-slider-thumb { -webkit-appearance: none; width: 10px; height: 10px; margin-top: -4.5px; border-radius: 50%; background: rgba(237,243,245,.9); border: 0; }
 .lbs input::-moz-range-thumb { width: 10px; height: 10px; border-radius: 50%; background: rgba(237,243,245,.9); border: 0; }
 .lbs input:focus-visible { outline: 1px solid rgba(237,243,245,.6); outline-offset: 4px; border-radius: 8px; }
+@media (pointer: coarse), (max-width: 800px) { .lbs { width: min(462px, 90vw); opacity: 1; gap: 10px; } .lbs span { font-size: 12px; padding: 14px 2px; } .lbs input { height: 48px; touch-action: none; } .lbs input::-webkit-slider-runnable-track { height: 2px; } .lbs input::-moz-range-track { height: 2px; } .lbs input::-webkit-slider-thumb { width: 28px; height: 28px; margin-top: -13px; box-shadow: 0 2px 8px rgba(0,0,0,.6); } .lbs input::-moz-range-thumb { width: 28px; height: 28px; box-shadow: 0 2px 8px rgba(0,0,0,.6); } }
 .lb figcaption { max-width: min(62ch, 100%); text-align: center; text-wrap: balance; line-height: 1.5; }
 .lb figcaption small { display: block; margin-top: 4px; font-size: 12px; color: var(--muted); min-height: 1.4em; }
 
